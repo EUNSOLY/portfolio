@@ -1,0 +1,107 @@
+@charset "utf-8";
+
+/* 눈누 폰트 */
+@font-face {
+  font-family: "S-CoreDream-3Light";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  font-family: "S-CoreDream-3Light";
+  font-weight: normal;
+  font-size: 16px;
+  color: #fff;
+  --mx: 1440px;
+  --colorMainB: #232323;
+  --colorMainW: #ffffff;
+  --colorMainP: #00b2ff;
+  --gapB: 32px;
+  --gapS: 16px;
+}
+img {
+  width: 100%;
+}
+
+.mw {
+  max-width: var(--mx);
+  margin: 0 auto;
+  width: calc(100% - 2rem);
+}
+body {
+  background-color: #232323;
+}
+
+.wrap {
+  overflow: hidden;
+}
+/* header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  width: 80px;
+  align-items: center;
+  justify-content: center;
+}
+.logo a {
+  width: 85%;
+}
+.gnb {
+  display: flex;
+}
+.gnb a {
+  padding: 0 1.25rem;
+  font-size: 1.25rem;
+}
+
+.mainContent {
+  letter-spacing: -0.085em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 15%;
+  font-weight: 600;
+}
+
+.mainContent h2 {
+  font-size: 6.75rem;
+  width: 100%;
+  text-align: center;
+}
+
+.mainContent p {
+  font-size: 3.25rem;
+}
+
+.slideText {
+  color: var(--colorMainP);
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  margin-top: 12%;
+}
+.icon a {
+  padding: 0.5rem;
+}
+.btnCon {
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  background-color: var(--colorMainP);
+  padding: 0.5rem 1.5rem;
+}
+
+.copyWriter {
+  position: absolute;
+  bottom: 2px;
+}
