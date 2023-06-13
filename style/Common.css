@@ -29,7 +29,7 @@ img {
   max-width: var(--mx);
   margin: 0 auto;
   width: calc(100% - 2rem);
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 body {
   background-color: #232323;
@@ -37,6 +37,19 @@ body {
 
 .wrap {
   overflow: hidden;
+}
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: -0.085em;
+  border: 1px solid red;
+}
+.Home,
+.About,
+.Connect {
+  display: none;
 }
 /* header */
 .header {
@@ -61,18 +74,19 @@ header .gnb a {
   padding: 0 1.25rem;
   font-size: 1.25rem;
 }
-.Home {
-  display: none;
+.Home.on {
+  display: block;
 }
-.Home .Content {
-  letter-spacing: -0.085em;
+.Content {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding-top: 15%;
   font-weight: 600;
 }
-
+.Home.on {
+  display: block;
+}
 .Home h2 {
   font-size: 6.75rem;
   width: 100%;
@@ -105,21 +119,25 @@ header .gnb a {
   cursor: pointer;
 }
 /* About */
-.aboutTop {
+.About.on {
+  display: block;
+}
+.aboutCommon {
   display: flex;
   justify-content: space-between;
-  border: 1px solid dodgerblue;
+  padding: 2rem 0;
 }
-.aboutTop .skillSet {
+.aboutCommonleft {
   width: 50%;
 }
-.aboutTop .title {
+.aboutCommontitle {
   font-size: 1.5rem;
   color: var(--colorMainP);
   font-weight: 600;
   position: relative;
   margin-bottom: 1rem;
 }
+
 .aboutTop .title::before {
   content: "( 아이콘을 클릭해주세요 )";
   position: absolute;
@@ -128,7 +146,7 @@ header .gnb a {
   right: 0;
   font-weight: normal;
 }
-.aboutTop .title::after {
+.aboutCommontitle::after {
   content: "";
   position: absolute;
   width: 75%;
@@ -142,13 +160,13 @@ header .gnb a {
   display: flex;
 }
 .aboutTop .skillList li {
-  margin-right: 1rem;
+  padding: 0 0.5rem 0 0;
+  /* margin-right: 1rem; */
   cursor: pointer;
   transform: scale(1);
   transition: 0.3s;
 }
 .aboutTop .skillList li.on {
-  border-bottom: 2px solid var(--colorMainP);
   transform: scale(1.1);
 }
 .aboutTop .tapBox {
@@ -173,6 +191,7 @@ header .gnb a {
   height: 100%;
   background-color: #fff;
   top: 0;
+
   left: 0;
 }
 .aboutTop .skillText {
@@ -198,8 +217,10 @@ header .gnb a {
 .aboutTop .skillText.skillImgCon li img {
   width: 100%;
 }
-.aboutTop .profile {
+.aboutCommonright {
   width: 40%;
+}
+.aboutTop .profile {
   padding-right: 2rem;
 }
 .aboutTop .profileBox {
@@ -224,8 +245,100 @@ header .gnb a {
   transform: translate(-50%, -50%);
   object-fit: cover;
 }
+.aboutBottom .contentCon {
+  display: flex;
+}
+.aboutBottom .contentList {
+  line-height: 1.2;
+  margin-right: 1.5rem;
+}
+.aboutBottom .date {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  padding-left: 1.25rem;
+  position: relative;
+}
+.aboutBottom .date::before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 100%;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+}
+.aboutBottom .title {
+  font-weight: lighter;
+}
+.aboutBottom .content {
+  padding: 0.5rem 0;
+  font-size: 0.85rem;
+}
+
+/* projects */
+
+.Projects.on {
+  display: block;
+}
+/* Connect */
+.Connect.on {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+.Connect > * {
+  width: 100%;
+}
+.Connect .txt {
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.2;
+  padding: 0.5rem 0;
+}
+.Connect .title {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 2rem 0;
+}
+.Connect .alink {
+  color: var(--colorMainP);
+}
 /* footer */
 .copyWriter {
   position: absolute;
   bottom: 2px;
+}
+
+@media (max-width: 970px) {
+  .aboutTop .skillSet {
+    width: 70%;
+
+    margin-right: 0.5rem;
+  }
+  .aboutTop .profile {
+    width: 40%;
+  }
+  .aboutTop .profileBox {
+    position: relative;
+    padding-top: 100%;
+    height: 100%;
+    /* overflow: hidden; */
+  }
+  .aboutTop .profileBox img {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media (max-width: 650px) {
+}
+
+@media (max-width: 1200px) {
+  .aboutCommontitle::after {
+    width: 35vw;
+  }
+  .aboutCommonright .aboutCommontitle.title::after {
+    width: 20vw;
+  }
 }

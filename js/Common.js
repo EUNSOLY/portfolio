@@ -70,15 +70,22 @@ fetch("./data/skillTextData.json")
       }
 
       $tapBox.innerHTML += HTML;
-      const $skillText = $tapBox.querySelectorAll("div");
-      $skillText[0].classList.add("on");
-      $skillIcon.forEach((iconitem, index) => {
-        iconitem.addEventListener("click", () => {
-          $skillText.forEach((item, textIndex) => {
-            item.classList.remove("on");
-          });
-          $skillText[index].classList.add("on");
+    });
+
+    const $skillText = $tapBox.querySelectorAll("div");
+    $skillText[0].classList.add("on");
+    $skillIcon.forEach((iconitem, index) => {
+      iconitem.addEventListener("click", () => {
+        $skillIcon.forEach((icon, i) => {
+          icon.classList.remove("on");
+          if (index == i) {
+            icon.classList.add("on");
+          }
         });
+        $skillText.forEach((item, textIndex) => {
+          item.classList.remove("on");
+        });
+        $skillText[index].classList.add("on");
       });
     });
   })

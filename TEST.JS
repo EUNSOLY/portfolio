@@ -84,6 +84,7 @@
 
 
 
+
   $skillIcon.forEach((icon, i) => {
     icon.addEventListener("click", () => {
       $skillIcon.forEach((item) => {
@@ -96,3 +97,22 @@
       $skillText[i].classList.add("on");
     });
   });
+
+
+
+
+
+  .aboutTop .skillTextCon h3 {
+    margin: 0.5rem 0;
+    padding-left: 0.75rem;
+    position: relative;
+  }
+  .aboutTop .skillTextCon h3::before {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 100%;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+  }
