@@ -9,9 +9,99 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "SCoreDream";
+  font-weight: 100;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream1.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream1.woff)
+      format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SCoreDream";
+  font-weight: 200;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream2.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream2.woff)
+      format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SCoreDream";
+  font-weight: 300;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream3.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream3.woff)
+      format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SCoreDream";
+  font-weight: 400;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream4.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream4.woff)
+      format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SCoreDream";
+  font-weight: 500;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream5.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream5.woff)
+      format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SCoreDream";
+  font-weight: 600;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream6.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream6.woff)
+      format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SCoreDream";
+  font-weight: 700;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream7.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream7.woff)
+      format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SCoreDream";
+  font-weight: 800;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream8.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream8.woff)
+      format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SCoreDream";
+  font-weight: 900;
+  font-style: normal;
+  src: url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream9.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/gh/webfontworld/SCoreDream/SCoreDream9.woff)
+      format("woff");
+  font-display: swap;
+}
 :root {
-  font-family: "S-CoreDream-3Light";
-  font-weight: normal;
+  font-family: "SCoreDream";
+  font-weight: 300;
   font-size: 16px;
   color: #fff;
   --mx: 1440px;
@@ -38,13 +128,16 @@ body {
 .wrap {
   overflow: hidden;
 }
+.title {
+  font-weight: 400;
+}
 main {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
   letter-spacing: -0.085em;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 .Home,
 .About,
@@ -248,6 +341,7 @@ header .gnb a {
 .aboutBottom .contentCon {
   display: flex;
 }
+
 .aboutBottom .contentList {
   line-height: 1.2;
   margin-right: 1.5rem;
@@ -280,6 +374,123 @@ header .gnb a {
 
 .Projects.on {
   display: block;
+}
+.Projects h2 {
+  font-size: 6.25rem;
+  font-weight: 100;
+  color: #ffffff50;
+}
+.Projects .contentCon {
+  overflow: hidden;
+}
+.Projects .contentCon ul {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+}
+.Projects .contentCon li {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex: 1 0 100%;
+  width: 100%;
+}
+
+/* 도트 */
+.Projects .contentCon .dotnavi {
+  /* border: 1px solid red; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+.Projects .contentCon .dotnavi span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ffffff20;
+  margin-right: 0.5rem;
+}
+.Projects .contentCon .dotnavi span.on {
+  background-color: #fff;
+}
+.Projects .contentCon li h2 {
+  width: 100%;
+}
+.Projects .title {
+  font-size: 2rem;
+}
+.Projects .left {
+  width: 50%;
+}
+
+.Projects .subtitle {
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: #ffffff50;
+  letter-spacing: 1px;
+  margin-bottom: 5rem;
+}
+.Projects .content {
+  padding: 0 0 5rem 0;
+}
+.Projects .hastag {
+  display: flex;
+}
+.Projects .hastag span {
+  margin-right: 0.5rem;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+}
+.Projects .btnCon {
+  display: flex;
+}
+.Projects .btnCon .btn {
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+}
+.Projects .right {
+  width: 50%;
+  padding-top: 30%;
+  position: relative;
+}
+.Projects .right img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
+.Projects .project2 img {
+  width: 40%;
+}
+.Projects .project3 img {
+  width: 60%;
+}
+
+.Projects .project4 .left {
+  order: 1;
+}
+.Projects .project4 .content span,
+.Projects .project6 .content span {
+  padding-left: 0.5rem;
+  position: relative;
+  letter-spacing: 1px;
+}
+.Projects .project4 .content span::before,
+.Projects .project6 .content span::before {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #fff;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.Projects .project4 .right {
+  order: 0;
 }
 /* Connect */
 .Connect.on {
