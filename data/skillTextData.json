@@ -1,0 +1,76 @@
+[
+  {
+    "title": "HTML / CSS",
+    "skills": [
+      "웹 표준을 기반으로 시맨틱 마크업을 통해 웹 페이지 구조 작성 가능합니다.",
+      "적응형 / 반응형 웹사이트 제작이 가능하며 경험이 있습니다.",
+      "애니메이션과 트랜지션을 사용하여 레이아웃 효과 구현 경험이 있습니다.",
+      "외부 라이브러리 TailwindCSS , BootStrap을 사용하여 레이아웃 작성 및 스타일일링이 가능합니다."
+    ]
+  },
+  {
+    "title": "HTML / CSS",
+    "skills": [
+      "웹 표준을 기반으로 시맨틱 마크업을 통해 웹 페이지 구조 작성 가능합니다.",
+      "적응형 / 반응형 웹사이트 제작이 가능하며 경험이 있습니다.",
+      "애니메이션과 트랜지션을 사용하여 레이아웃 효과 구현 경험이 있습니다.",
+      "외부 라이브러리 TailwindCSS , BootStrap을 사용하여 레이아웃 작성 및 스타일일링이 가능합니다."
+    ]
+  },
+  {
+    "title": "JAVASCRIPT",
+    "skills": [
+      "ECMAScript 표준인 ES6이상의 문법과 기능을 사용 할 수 있으며 꾸준히 공부하고 있습니다. (클래스, 화살표함수, 비구조화할당)",
+      "기본적인 자바스크립트 문법, 변수, 조건문, 반복문, 함수 등을 이해하고 활용할 수 있습니다.",
+      "DOM을 사용하여 HTML문서의 요소를 선택하고 조작할 수 있습니다 (요소생성, 스타일 변경, 이벤트처리)",
+      "AJAX 비동기적 데이터 통신이 가능합니다 (Fetch, axios 등..)"
+    ]
+  },
+  {
+    "title": "React.js",
+    "skills": [
+      "JSX문법을 사용하여 컴포넌트를 구성하고 렌더링 및 구조를 작성 할 수 있습니다.",
+      "React Hook을 사용하여 컴포넌트의 상태와 라이프사이클을 관리할 수 있습니다.",
+      "React Router를 사용하여 라우팅을 구현하고 다양한 경로에 대한 컴포넌트를 렌더링 할 수 있습니다.",
+      "React Bootstrap, Styled-components를 사용하여 컴포넌트에 스타일링이 가능합니다.",
+      "Redux toolkit을 사용한 경험이 있습니다.",
+      "axios를 이용하여 API 데이터를 받아와, 컴포넌트에 데이터를 바인딩한 경험이 있습니다.",
+      "React-Native 를 사용하여 어플리케이션 개발 경험이 있습니다.",
+      "Expo, React-navigation, Native-Base 사용"
+    ]
+  },
+  {
+    "title": "Node.js",
+    "skills": [
+      "Node.js의 비동기 특성을 이해하고 Promise, async/await 등을 사용해본 경험이 있습니다.",
+      "Express.js 프레임워크, Mongo DB 데이터베이스를 사용하여 데이터의 생성, 조회, 수정, 삭제(CRUD)작업 개발 경험이 있습니다."
+    ]
+  },
+  {
+    "title": "AWS",
+    "skills": [
+      "API Gateway 와 Lamda를 연동을 통해 서버 배포를 진행하고 Cloudflare를 사용하여 UI 화면 코드를 배포하여 프로젝트를 완성한 경험이 있습니다."
+    ]
+  },
+  {
+    "title": "FireBase",
+    "skills": [
+      "Authentiation을 활용하여 회원가입 기능 사용",
+      "Firestore Datebase를 활용한 데이터 핸들링",
+      "Storage에 이미지저장하여 해당 이미지 url을 database에 저장하는 식으로 데이터베이스 용량 문제 해결",
+      "위와 같은 3가지 기능을 토대로 어플리케이션 구현하였습니다."
+    ]
+  },
+  {
+    "title": "Github",
+    "skills": [
+      "Git을 사용하여 소스 코드의 버전 관리가 가능하며 변경사항을 추적하고 이전 버전으로 변경 및 브랜치 병합의 경험이 있습니다.",
+      "github를 통해 원격 저장소를 생성하고, 로컬과 원격 저장소 간의 코드 push 및 pull을 통해 코드를 공유하고 협업할 수 있습니다",
+      "Markdown 형식을 활용하여 프로젝트의 README파일 등을 작성하고 관리할 수 있으며 프로젝트에 대한 정보와 설명을 제공할 수 있습니다."
+    ]
+  },
+  {
+    "title": ["Graphics", "Cooperation"],
+    "skills": ["Photoshop", "illustration", "figma", "slack", "notion"]
+  }
+]

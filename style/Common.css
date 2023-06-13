@@ -29,6 +29,7 @@ img {
   max-width: var(--mx);
   margin: 0 auto;
   width: calc(100% - 2rem);
+  border: 1px solid red;
 }
 body {
   background-color: #232323;
@@ -44,24 +45,26 @@ body {
   height: 70px;
   align-items: center;
 }
-.logo {
+header .logo {
   display: flex;
   width: 80px;
   align-items: center;
   justify-content: center;
 }
-.logo a {
+header .logo a {
   width: 85%;
 }
-.gnb {
+header .gnb {
   display: flex;
 }
-.gnb a {
+header .gnb a {
   padding: 0 1.25rem;
   font-size: 1.25rem;
 }
-
-.mainContent {
+.Home {
+  display: none;
+}
+.Home .Content {
   letter-spacing: -0.085em;
   display: flex;
   flex-wrap: wrap;
@@ -70,37 +73,158 @@ body {
   font-weight: 600;
 }
 
-.mainContent h2 {
+.Home h2 {
   font-size: 6.75rem;
   width: 100%;
   text-align: center;
 }
 
-.mainContent p {
+.Home p {
   font-size: 3.25rem;
 }
 
-.slideText {
+.Home .slideText {
   color: var(--colorMainP);
 }
 
-.icon {
+.Home .icon {
   display: flex;
   justify-content: center;
   margin-top: 12%;
 }
-.icon a {
+.Home .icon a {
   padding: 0.5rem;
 }
-.btnCon {
+.Home .btnCon {
   display: flex;
   justify-content: center;
 }
 .btn {
   background-color: var(--colorMainP);
   padding: 0.5rem 1.5rem;
+  cursor: pointer;
+}
+/* About */
+.aboutTop {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid dodgerblue;
+}
+.aboutTop .skillSet {
+  width: 50%;
+}
+.aboutTop .title {
+  font-size: 1.5rem;
+  color: var(--colorMainP);
+  font-weight: 600;
+  position: relative;
+  margin-bottom: 1rem;
+}
+.aboutTop .title::before {
+  content: "( 아이콘을 클릭해주세요 )";
+  position: absolute;
+  font-size: 0.75rem;
+  color: #ffa51f;
+  right: 0;
+  font-weight: normal;
+}
+.aboutTop .title::after {
+  content: "";
+  position: absolute;
+  width: 75%;
+  height: 2px;
+  background-color: #fff;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+}
+.aboutTop .skillList {
+  display: flex;
+}
+.aboutTop .skillList li {
+  margin-right: 1rem;
+  cursor: pointer;
+  transform: scale(1);
+  transition: 0.3s;
+}
+.aboutTop .skillList li.on {
+  border-bottom: 2px solid var(--colorMainP);
+  transform: scale(1.1);
+}
+.aboutTop .tapBox {
+  margin-top: 3rem;
+}
+.aboutTop .skillTextCon {
+  font-size: 1rem;
+  display: none;
+}
+.aboutTop .skillTextCon.on {
+  display: block;
+}
+.aboutTop .skillTextCon h3 {
+  margin: 0.5rem 0;
+  padding-left: 0.75rem;
+  position: relative;
+}
+.aboutTop .skillTextCon h3::before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 100%;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+}
+.aboutTop .skillText {
+  padding-left: 2rem;
+  list-style: circle;
+}
+.aboutTop .skillTextCon h3 {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.aboutTop .skillText li {
+  line-height: 1.75;
+  font-weight: normal;
 }
 
+.aboutTop .skillText.skillImgCon {
+  list-style: none;
+  display: flex;
+}
+.aboutTop .skillText.skillImgCon li {
+  padding: 0 0.75rem;
+}
+.aboutTop .skillText.skillImgCon li img {
+  width: 100%;
+}
+.aboutTop .profile {
+  width: 40%;
+  padding-right: 2rem;
+}
+.aboutTop .profileBox {
+  position: relative;
+  padding-top: 100%;
+  /* overflow: hidden; */
+}
+.aboutTop .profileBox::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid #fff;
+  top: 3%;
+  left: 5%;
+  z-index: -1;
+}
+.aboutTop .profileBox img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+/* footer */
 .copyWriter {
   position: absolute;
   bottom: 2px;
