@@ -1,9 +1,42 @@
+// 싱글페이지 구현으로 라우트기능
+function getCurrentURL() {
+  return window.location.pathname;
+}
+const headLink = document.querySelectorAll(".gnb > a");
+function showMenu(menuId) {
+  const menu = document.querySelectorAll("main");
+  menu.forEach((menu) => {
+    menu.classList.remove("on");
+  });
+  const selectedMenu = document.querySelector(`.${menuId}`);
+  selectedMenu.classList.add("on");
+  if (menuId == "/") {
+    const selectedMenu = document.querySelector("main.Home");
+    selectedMenu.classList.add("on");
+  }
+}
+
+headLink.forEach((link, i) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const linkURL = link.getAttribute("href");
+    const mainPath = linkURL.substring(1);
+    showMenu(mainPath);
+    headLink.forEach((link) => {
+      link.classList.remove("on");
+    });
+    link.classList.add("on");
+  });
+});
+showMenu("Home");
+
 const slideText = document.querySelector(".slideText");
 const texts = ["끊임없이 도전하는", "끊임없이 성장하는", "오늘과 내일이 다른"]; // 변경할 글자들
 let currentIndex = 0;
 
 slideText.textContent = texts[currentIndex];
 
+// HOME 자기소개 자동슬라이드
 function slideTextAnimation() {
   currentIndex = (currentIndex + 1) % texts.length;
   slideText.textContent = texts[currentIndex];
@@ -11,7 +44,7 @@ function slideTextAnimation() {
 
 setInterval(slideTextAnimation, 2500);
 
-// 스킬
+// 스킬텝메뉴 구현
 const $tapBox = document.querySelector(".tapBox");
 const $skillIcon = document.querySelectorAll(".skillList > li");
 let listData;
@@ -95,15 +128,18 @@ fetch("./data/skillTextData.json")
   });
 
 // 프로젝트 슬라이드 구현
+//
 const $slideCon = document.querySelector(".contentCon ul");
 const $slides = document.querySelectorAll(".contentCon li");
 const $dotNav = document.querySelector(".dotnavi");
 
-let currentSlide = 0;
-let sliderCount = $slides.length;
-let slideWidth = $slides[0].offsetWidth;
-let dotIndex = "";
+let currentSlide = 0; // 증가값 초기화
+let sliderCount = $slides.length; // 슬라이드 갯수
+let slideWidth = $slides[0].offsetWidth; // 슬라이드 1개의 크기
+let dotIndex = ""; // 도트 초기화
+let intervalId; // interval초기화셋팅
 
+// 화면크기에 따른 슬라이드 반응형
 window.addEventListener("resize", () => {
   slideWidth = $slides[0].offsetWidth;
 });
@@ -130,17 +166,25 @@ $dot.forEach((dot, i) => {
   dot.addEventListener("click", () => {
     const clickedIndex = dot.getAttribute("data-index");
     currentSlide = parseInt(clickedIndex) - 1;
+    clearInterval(intervalId);
     moveSlide();
+    intervalId = setInterval(moveSlide, 3000);
   });
 });
-// 첫 번째 슬라이드를 복사하여 뒤에 추가
-$slideCon.appendChild($slides[0].cloneNode(true));
 
-//슬라이드 콜백함수
+//슬라이드구현
+$slideCon.appendChild($slides[0].cloneNode(true)); // 첫 번째 슬라이드를 복사하여 뒤에 추가
+
+// 슬라이드 콜백함수
 function moveSlide() {
   $slideCon.style.transition = "0.5s";
   $slideCon.style.marginLeft = `-${slideWidth * (currentSlide + 1)}px`;
+
+  console.log(currentSlide, "++전");
+
   currentSlide++;
+
+  console.log(`-${slideWidth * (currentSlide + 1)}px`);
   if (currentSlide === sliderCount) {
     // 마지막 슬라이드에 도달한 경우 첫 번째 슬라이드로 되돌아감
     setTimeout(() => {
@@ -152,4 +196,5 @@ function moveSlide() {
   }
   dotActive(currentSlide);
 }
-setInterval(moveSlide, 3000);
+
+intervalId = setInterval(moveSlide, 3000); // 자동슬라이드 실행

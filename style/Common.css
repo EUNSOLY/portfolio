@@ -125,16 +125,11 @@ body {
   font-weight: 400;
 }
 main {
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   letter-spacing: -0.085em;
-  /* border: 1px solid red; */
 }
 .Home,
 .About,
-.Projects,
+.Project,
 .Connect {
   display: none;
 }
@@ -160,6 +155,25 @@ header .gnb {
 header .gnb a {
   padding: 0 1.25rem;
   font-size: 1.25rem;
+}
+header .gnb a.on {
+  color: var(--colorMainP);
+  position: relative;
+}
+header .gnb a::before {
+  position: absolute;
+  content: "";
+  width: 60%;
+  height: 1px;
+  background-color: var(--colorMainP);
+  top: 120%;
+  left: 50%;
+  transform: translate(-50%);
+  opacity: 0;
+  transition: 0.3s;
+}
+header .gnb a.on::before {
+  opacity: 1;
 }
 .Home.on {
   display: block;
@@ -366,23 +380,23 @@ header .gnb a {
 
 /* projects */
 
-.Projects.on {
+.Project.on {
   display: block;
 }
-.Projects h2 {
+.Project h2 {
   font-size: 6.25rem;
   font-weight: 100;
   color: #ffffff50;
 }
-.Projects .contentCon {
+.Project .contentCon {
   overflow: hidden;
 }
-.Projects .contentCon ul {
+.Project .contentCon ul {
   width: 100%;
   margin-top: 1rem;
   display: flex;
 }
-.Projects .contentCon li {
+.Project .contentCon li {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -391,88 +405,89 @@ header .gnb a {
 }
 
 /* 도트 */
-.Projects .contentCon .dotnavi {
+.Project .contentCon .dotnavi {
   /* border: 1px solid red; */
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 2rem 0;
 }
-.Projects .contentCon .dotnavi span {
+.Project .contentCon .dotnavi span {
   width: 15px;
   height: 15px;
   border-radius: 50%;
   background-color: #ffffff20;
   margin-right: var(--gapS);
 }
-.Projects .contentCon .dotnavi span.on {
+.Project .contentCon .dotnavi span.on {
   background-color: #fff;
 }
-.Projects .contentCon li h2 {
+.Project .contentCon li h2 {
   width: 100%;
 }
-.Projects .title {
+.Project .title {
   font-size: 2rem;
 }
-.Projects .left {
+
+.Project .left {
   width: 50%;
 }
 
-.Projects .subtitle {
+.Project .subtitle {
   font-weight: 300;
   font-size: 0.85rem;
   color: #ffffff50;
   letter-spacing: 1px;
   margin-bottom: 5rem;
 }
-.Projects .content {
+.Project .content {
   padding: 0 0 5rem 0;
 }
-.Projects .hastag {
+.Project .hastag {
   display: flex;
 }
-.Projects .hastag span {
+.Project .hastag span {
   margin-right: 0.5rem;
   letter-spacing: 1px;
   font-size: 0.85rem;
 }
-.Projects .btnCon {
+.Project .btnCon {
   display: flex;
 }
-.Projects .btnCon .btn {
+.Project .btnCon .btn {
   margin-top: 1rem;
   margin-right: 0.5rem;
 }
-.Projects .right {
+.Project .right {
   width: 50%;
   padding-top: 30%;
   position: relative;
 }
-.Projects .right img {
+.Project .right img {
   position: absolute;
   top: 50%;
   left: 50%;
   object-fit: cover;
   transform: translate(-50%, -50%);
 }
-.Projects .project2 img {
+.Project .project2 img {
   width: 40%;
 }
-.Projects .project3 img {
+.Project .project3 img {
   width: 60%;
 }
 
-.Projects .project4 .left {
+.Project .project4 .left {
   order: 1;
 }
-.Projects .project4 .content span,
-.Projects .project6 .content span {
+.Project .project4 .content span,
+.Project .project6 .content span {
   padding-left: 0.5rem;
   position: relative;
   letter-spacing: 1px;
 }
-.Projects .project4 .content span::before,
-.Projects .project6 .content span::before {
+.Project .project4 .content span::before,
+.Project .project6 .content span::before {
   content: "";
   position: absolute;
   width: 3px;
@@ -483,10 +498,10 @@ header .gnb a {
   top: 50%;
   transform: translate(0, -50%);
 }
-.Projects .project4 .right {
+.Project .project4 .right {
   order: 0;
 }
-/* Connect */
+/* ConneEct */
 .Connect.on {
   display: flex;
   flex-wrap: wrap;
