@@ -98,25 +98,51 @@ fetch("./data/skillTextData.json")
 const $slideCon = document.querySelector(".contentCon ul");
 const $slides = document.querySelectorAll(".contentCon li");
 const $dotNav = document.querySelector(".dotnavi");
-const slideInterval = 3000; // 슬라이드 간격 설정 (3초)
 
 let currentSlide = 0;
 let sliderCount = $slides.length;
 let slideWidth = $slides[0].offsetWidth;
+let dotIndex = "";
 
 window.addEventListener("resize", () => {
   slideWidth = $slides[0].offsetWidth;
 });
 
+// 도트 생성
+$slides.forEach((item, i) => {
+  i === currentSlide ? (active = "on") : (active = "");
+  dotIndex += `<span class='dot ${active}' data-index="${i}"></span>`;
+  $dotNav.innerHTML = dotIndex;
+});
+
+// 도트 실행
+function dotActive() {
+  let $dot = $dotNav.querySelectorAll("span");
+  $dot.forEach((item, i) => {
+    item.classList.remove("on");
+    $dot[currentSlide].classList.add("on");
+  });
+}
+
+// 도트클릭이벤트
+let $dot = $dotNav.querySelectorAll("span");
+$dot.forEach((dot, i) => {
+  dot.addEventListener("click", () => {
+    const clickedIndex = dot.getAttribute("data-index");
+    currentSlide = parseInt(clickedIndex) - 1;
+    moveSlide();
+  });
+});
 // 첫 번째 슬라이드를 복사하여 뒤에 추가
 $slideCon.appendChild($slides[0].cloneNode(true));
-setInterval(() => {
+
+//슬라이드 콜백함수
+function moveSlide() {
   $slideCon.style.transition = "0.5s";
   $slideCon.style.marginLeft = `-${slideWidth * (currentSlide + 1)}px`;
   currentSlide++;
   if (currentSlide === sliderCount) {
     // 마지막 슬라이드에 도달한 경우 첫 번째 슬라이드로 되돌아감
-
     setTimeout(() => {
       $slideCon.style.transition = "none";
       $slideCon.style.marginLeft = "0";
@@ -124,18 +150,6 @@ setInterval(() => {
     }, 1000);
     currentSlide = 0;
   }
-}, 3000);
-
-// $slideCon.append($slideCon.firstElementChild);
-
-console.log($slideCon.firstElementChild);
-
-// 도트생성콜백함수
-function creactDotNavigation() {
-  for (let i = 0; i < $slides.length; i++) {
-    const dot = document.createElement("span");
-    $dotNav.appendChild(dot);
-  }
+  dotActive(currentSlide);
 }
-// 도트 콜백함수 실행
-creactDotNavigation();
+setInterval(moveSlide, 3000);

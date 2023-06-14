@@ -2,14 +2,6 @@
 
 /* 눈누 폰트 */
 @font-face {
-  font-family: "S-CoreDream-3Light";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: "SCoreDream";
   font-weight: 100;
   font-style: normal;
@@ -111,6 +103,7 @@
   --gapB: 32px;
   --gapS: 16px;
 }
+
 img {
   width: 100%;
 }
@@ -141,6 +134,7 @@ main {
 }
 .Home,
 .About,
+.Projects,
 .Connect {
   display: none;
 }
@@ -405,11 +399,11 @@ header .gnb a {
   padding: 2rem 0;
 }
 .Projects .contentCon .dotnavi span {
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   background-color: #ffffff20;
-  margin-right: 0.5rem;
+  margin-right: var(--gapS);
 }
 .Projects .contentCon .dotnavi span.on {
   background-color: #fff;
@@ -498,6 +492,11 @@ header .gnb a {
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
+  align-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .Connect > * {
   width: 100%;
