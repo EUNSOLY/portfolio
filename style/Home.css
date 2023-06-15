@@ -281,7 +281,7 @@ header .gnb a.on::before {
 
 .Project.on {
   display: block;
-  border: 1px solid red;
+
   width: 100%;
 }
 .Project h2 {
@@ -300,7 +300,6 @@ header .gnb a.on::before {
   display: flex;
 }
 .Project .contentCon li {
-  border: 1px solid red;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;

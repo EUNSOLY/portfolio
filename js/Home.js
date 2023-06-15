@@ -57,7 +57,7 @@ function showMenu(menuId) {
         currentSlide = parseInt(clickedIndex) - 1;
         clearInterval(intervalId);
         moveSlide();
-        // intervalId = setInterval(moveSlide, 3000);
+        ntervalId = setInterval(moveSlide, 3000);
       });
     });
 
@@ -86,7 +86,7 @@ function showMenu(menuId) {
       dotActive(currentSlide);
     }
 
-    // intervalId = setInterval(moveSlide, 3000); // 자동슬라이드 실행
+    intervalId = setInterval(moveSlide, 3000); // 자동슬라이드 실행
   }
 }
 
