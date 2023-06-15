@@ -1,0 +1,616 @@
+.wrap {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: #232323;
+  height: 100vh;
+}
+
+.contentWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--gapB);
+}
+main {
+  letter-spacing: -0.085rem;
+}
+
+/* header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  align-items: center;
+  position: relative;
+}
+header .logo {
+  display: flex;
+  width: 80px;
+  align-items: center;
+  justify-content: center;
+}
+header .logo a {
+  width: 85%;
+}
+header .gnb {
+  display: flex;
+}
+header .gnb a {
+  padding: 0 1.25rem;
+}
+header .gnb a.on {
+  color: var(--colorMainP);
+  position: relative;
+}
+header .gnb a::before {
+  position: absolute;
+  content: "";
+  width: 60%;
+  height: 1px;
+  background-color: var(--colorMainP);
+  top: 120%;
+  left: 50%;
+  transform: translate(-50%);
+  opacity: 0;
+  transition: 0.3s;
+}
+header .gnb a.on::before {
+  opacity: 1;
+}
+
+/* 일괄종료 */
+.Home,
+.About,
+.Project,
+.Connect {
+  display: none;
+}
+.Home.on {
+  display: flex;
+  flex-wrap: wrap;
+  height: calc(100vh - 150px);
+  justify-content: center;
+  align-content: center;
+}
+.Content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* padding-top: 15%; */
+  font-weight: 600;
+}
+
+.Home h2 {
+  /* font-size: 6vw; */
+  font-size: 6.75rem;
+  width: 100%;
+  text-align: center;
+}
+
+.Home p {
+  /* font-size: 3vw; */
+  font-size: 3.25rem;
+}
+
+.Home .slideText {
+  color: var(--colorMainP);
+}
+
+.Home .icon {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 12%;
+}
+.Home .icon a {
+  padding: 0.5rem;
+}
+.Home .btnCon {
+  display: flex;
+  justify-content: center;
+}
+
+/* About */
+.About.on {
+  display: block;
+  width: 100%;
+}
+.aboutCommon {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--gapB) 0;
+}
+.aboutCommonleft {
+  width: 50%;
+}
+.aboutCommontitle {
+  font-size: 1.5rem;
+  color: var(--colorMainP);
+  font-weight: 600;
+  position: relative;
+  margin-bottom: 1rem;
+}
+.aboutCommontitle::after {
+  content: "";
+  position: absolute;
+  width: 75%;
+  height: 2px;
+  background-color: #fff;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+}
+.aboutCommonright {
+  width: 40%;
+}
+.About h3 {
+  margin: 0.5rem 0;
+  padding-left: 0.75rem;
+  position: relative;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+.aboutTop .skillTit::before {
+  content: "( 아이콘을 클릭해주세요 )";
+  position: absolute;
+  font-size: 0.75rem;
+  color: #ffa51f;
+  right: 0;
+  font-weight: 300;
+  top: -5px;
+}
+
+.aboutTop .skillList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.aboutTop .skillList li {
+  padding: 0 0.75rem 0 0;
+  cursor: pointer;
+  transform: scale(1);
+  transition: 0.3s;
+}
+
+.aboutTop .skillList li img[alt*="GITHUB"] {
+  width: 95%;
+}
+
+.aboutTop .skillList li.on {
+  transform: scale(1.1);
+}
+.aboutTop .tapBox {
+  margin-top: 3rem;
+}
+.aboutTop .skillTextCon {
+  font-size: 1rem;
+  display: none;
+}
+.aboutTop .skillTextCon.on {
+  display: block;
+}
+
+.aboutTop .skillTextCon h3::before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 100%;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+}
+.aboutTop .skillText {
+  padding-left: 2rem;
+  list-style: circle;
+}
+
+.aboutTop .skillText li {
+  line-height: 1.75;
+  font-weight: 300;
+  letter-spacing: 0.05rem;
+}
+
+.aboutTop .skillText.skillImgCon {
+  list-style: none;
+  display: flex;
+}
+.aboutTop .skillText.skillImgCon li {
+  padding: 0 0.75rem;
+}
+.aboutTop .skillText.skillImgCon li img {
+  width: 100%;
+}
+
+.aboutTop .profile {
+  padding-right: 2rem;
+}
+.aboutTop .profileBox {
+  position: relative;
+  padding-top: 100%;
+  z-index: 10;
+  /* overflow: hidden; */
+}
+.aboutTop .profileBox::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid #ddd;
+  top: 3%;
+  left: 5%;
+  z-index: -1;
+}
+.aboutTop .profileBox img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.aboutBottom .contentCon {
+  display: flex;
+}
+
+.aboutBottom .aboutCommonright > h2::after {
+  width: 60%;
+}
+
+.aboutBottom .contentList {
+  line-height: 1.2;
+  margin-right: 2rem;
+}
+
+.aboutBottom .date::before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 100%;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+}
+
+.aboutBottom .content {
+  padding: 0.5rem 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.05rem;
+}
+/* projects */
+
+.Project.on {
+  display: block;
+  border: 1px solid red;
+  width: 100%;
+}
+.Project h2 {
+  font-size: 6.25rem;
+  font-weight: 100;
+  color: #ffffff50;
+}
+.Project .contentCon {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.Project .contentCon ul {
+  width: calc(100% * 6);
+  margin-top: 1rem;
+  display: flex;
+}
+.Project .contentCon li {
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  flex: 1;
+}
+.Project .contentCon li:nth-of-type(6) ~ li {
+  display: none;
+}
+
+/* 도트 */
+.Project .contentCon .dotnavi {
+  /* border: 1px solid red; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+.Project .contentCon .dotnavi span {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ffffff20;
+  margin-right: var(--gapS);
+}
+.Project .contentCon .dotnavi span.on {
+  background-color: #fff;
+}
+.Project .contentCon li h2 {
+  width: 100%;
+}
+.Project .title {
+  font-size: 2rem;
+}
+
+.Project .left {
+  width: 50%;
+}
+
+.Project .subtitle {
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: #ffffff50;
+  letter-spacing: 1px;
+  margin-bottom: 5rem;
+}
+.Project .content {
+  padding: 0 0 5rem 0;
+}
+.Project .hastag {
+  display: flex;
+}
+.Project .hastag span {
+  margin-right: 0.5rem;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+}
+.Project .btnCon {
+  display: flex;
+}
+.Project .btnCon .btn {
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+}
+.Project .right {
+  width: 50%;
+  padding-top: 30%;
+  position: relative;
+}
+.Project .right img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
+.Project .project2 img {
+  width: 40%;
+}
+.Project .project3 img {
+  width: 60%;
+}
+
+.Project .project4 .left {
+  order: 1;
+}
+.Project .project4 .content span,
+.Project .project6 .content span {
+  padding-left: 0.5rem;
+  position: relative;
+  letter-spacing: 1px;
+}
+.Project .project4 .content span::before,
+.Project .project6 .content span::before {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #fff;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.Project .project4 .right {
+  order: 0;
+}
+/* ConneEct */
+.Connect.on {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+  height: calc(100vh - 150px);
+}
+.Connect > * {
+  width: 100%;
+}
+.Connect .txt {
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.2;
+  padding: 0.5rem 0;
+}
+.Connect .title {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 2rem 0;
+}
+.Connect .alink {
+  color: var(--colorMainP);
+}
+/* footer */
+.copyWriter {
+  position: absolute;
+  bottom: 2px;
+}
+
+@media (max-width: 880px) {
+  /* HEADER반응형 880PX */
+  header .gnb a {
+    padding: 0 1rem;
+  }
+  /* HOME반응형 880PX */
+  .Home h2 {
+    font-size: 10vw;
+  }
+
+  .Home p {
+    font-size: 5vw;
+  }
+  /* about반응형 880px */
+  .aboutTop {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .aboutCommonleft {
+    width: 100%;
+  }
+  .aboutTop .aboutCommonleft {
+    order: 1;
+    margin-top: var(--gapB);
+  }
+  .aboutTop .profile {
+    order: 0;
+    width: 60%;
+  }
+  .aboutBottom {
+    flex-wrap: wrap;
+  }
+
+  .aboutBottom .aboutCommonleft {
+    margin-bottom: var(--gapB);
+  }
+  .aboutBottom .contentList:nth-of-type(2) {
+    margin-right: 0;
+  }
+  .aboutBottom .aboutCommonleft .contentTitle {
+    font-size: 0.85rem;
+  }
+  .About h3 {
+    font-size: 1rem;
+  }
+  .aboutBottom .aboutCommonright {
+    width: 100%;
+  }
+
+  .aboutBottom .aboutCommonright > h2::after {
+    width: 75%;
+  }
+
+  .aboutBottom .aboutCommonright .contentList {
+    margin-right: calc(var(--gapB) * 2);
+  }
+  /* connect반응형 880px */
+  .Connect .txt {
+    font-size: 2.4vw;
+    padding: 0.75vw 0;
+  }
+  .Connect .title {
+    font-size: 3.7vw;
+    font-weight: bold;
+    padding: 1vw 0;
+  }
+  /* footer반응형 880px */
+  .copyWriter {
+    position: static;
+    padding: 0.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  /* HEADER반응형 480PX */
+  .header {
+    display: block;
+    flex-wrap: wrap;
+    height: 90px;
+  }
+  .header .logo {
+    width: 50px;
+    margin-left: calc(var(--gapS) / 2);
+    margin-top: var(--gapS);
+  }
+  .header .gnb {
+    width: 100%;
+    padding-top: var(--gapS);
+  }
+  .header .gnb a {
+    font-size: 3.5vw;
+    padding: 0 5vw;
+  }
+
+  /* HOME반응형 480PX */
+  .Home.on {
+    height: calc(100vh - 220px);
+  }
+  /* about반응형 480px */
+  .aboutTop .aboutCommonleft {
+    order: 1;
+    width: 100%;
+    margin-top: var(--gapB);
+  }
+  .aboutCommontitle {
+    font-size: 1.25rem;
+  }
+  .aboutTop .skillList {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+  }
+  .aboutTop .skillList li {
+    padding: 0 0.5rem 0 0;
+    transition: 0.3s;
+    width: 45px;
+  }
+  .aboutTop .tapBox {
+    margin-top: 1rem;
+  }
+  .About h3 {
+    margin: 0 0 0.5rem 0;
+  }
+  .aboutTop .skillText {
+    font-size: 0.85rem;
+  }
+  .aboutBottom .contentCon {
+    flex-wrap: wrap;
+  }
+  .aboutBottom .contentList {
+    margin-bottom: var(--gapS);
+  }
+  .aboutCommontitle::after {
+    width: 58%;
+  }
+  .aboutBottom .aboutCommonright > h2::after {
+    width: 58%;
+  }
+  /* Connet반응형 480px */
+  .Connect.on {
+    height: calc(100vh - 220px);
+  }
+  .Connect .txt {
+    font-size: 0.85rem;
+    padding: 0.75vw 0;
+  }
+  .Connect .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 1vw 0;
+  }
+}
+
+@media (max-width: 380px) {
+  /* HOME반응형 380PX */
+  .Home .icon {
+    margin-top: 0;
+  }
+  .Home .icon a {
+    padding: 0.75rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Home .icon a img {
+    width: 80%;
+  }
+
+  /* FOOTER반응형 380PX */
+  .copyWriter {
+    font-size: 0.75rem;
+  }
+}

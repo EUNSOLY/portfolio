@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style/my_reset.css" />
     <link rel="stylesheet" href="./style/Common.css" />
-    <link rel="stylesheet" href="./style/Loding.css" />
-    <script src="./js/Loding.js" defer></script>
+    <link rel="stylesheet" href="./style/index.css" />
+    <script src="./js/index.js" defer></script>
+    <!-- <script src="./js/Loding.js" defer></script> -->
     <title>이은솔_Portfolio</title>
   </head>
   <body>
@@ -25,5 +26,15 @@
       <p class="scratchTxt">Scratch it!</p>
       <p class="copy">@EUNSOLY</p>
     </div>
+    <script>
+      window.addEventListener("load", function () {
+        if (!localStorage.getItem("refreshed")) {
+          localStorage.setItem("refreshed", "true");
+          location.reload(); // Perform one-time forced refresh
+        } else {
+          localStorage.removeItem("refreshed"); // Remove the flag
+        }
+      });
+    </script>
   </body>
 </html>

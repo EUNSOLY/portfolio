@@ -8,17 +8,18 @@
       href="https://webfontworld.github.io/SCoreDream/SCoreDream.css"
       rel="stylesheet"
     />
-
     <link rel="stylesheet" href="./style/my_reset.css" />
     <link rel="stylesheet" href="./style/Common.css" />
-    <script src="./js/Common.js" defer></script>
+    <link rel="stylesheet" href="./style/Home.css" />
+    <!-- <link rel="stylesheet" href="./style/Home copy.css" /> -->
+    <script src="./js/Home.js" defer></script>
     <title>이은솔_Portfolio</title>
   </head>
   <body>
     <div class="wrap">
       <header class="header mw">
         <h1 class="logo">
-          <a href="#none">
+          <a href="/Home">
             <img src="./image/logo.svg" alt="logo" />
           </a>
         </h1>
@@ -30,287 +31,291 @@
         </nav>
       </header>
 
-      <!-- Home -->
-      <main class="Home mw">
-        <article class="Content">
-          <h2>당첨!</h2>
-          <p><span class="slideText"></span> 이은솔입니다</p>
-        </article>
+      <div class="contentWrap mw">
+        <!-- Home -->
+        <main class="Home">
+          <article class="Content">
+            <h2>당첨!</h2>
+            <p><span class="slideText"></span> 이은솔입니다</p>
+          </article>
 
-        <article class="icon">
-          <a href="https://github.com/EUNSOLY" target="_blank">
-            <img src="./image/github.svg" alt="github" />
-          </a>
-          <a href="#none">
-            <img src="./image/insta.svg" alt="instagram" />
-          </a>
-          <a href="#none">
-            <img src="./image/notion.svg" alt="notion" />
-          </a>
-        </article>
+          <article class="icon">
+            <a href="https://github.com/EUNSOLY" target="_blank">
+              <img src="./image/github.svg" alt="github" />
+            </a>
+            <a href="#none">
+              <img src="./image/insta.svg" alt="instagram" />
+            </a>
+            <a href="#none">
+              <img src="./image/notion.svg" alt="notion" />
+            </a>
+          </article>
 
-        <div class="btnCon">
-          <button href="#none" class="btn">이력서PDF</button>
-        </div>
-      </main>
+          <div class="btnCon">
+            <button href="#none" class="btn">이력서PDF</button>
+          </div>
+        </main>
 
-      <!-- About -->
-      <main class="About mw">
-        <!-- 상단 -->
-        <section class="aboutCommon aboutTop">
-          <article class="aboutCommonleft skillSet">
-            <h2 class="aboutCommontitle title">Skill Set.</h2>
-            <ul class="skillList">
-              <li class="on">
-                <img src="./image/HTML.svg" alt="HTML" />
+        <!-- About -->
+        <main class="About">
+          <!-- 상단 -->
+          <section class="aboutCommon aboutTop">
+            <article class="aboutCommonleft skillSet">
+              <h2 class="aboutCommontitle skillTit">Skill Set.</h2>
+              <ul class="skillList">
+                <li class="on">
+                  <img src="./image/HTML.svg" alt="HTML" />
+                </li>
+                <li>
+                  <img src="./image/CSS.svg" alt="CSS" />
+                </li>
+                <li>
+                  <img src="./image/JS.svg" alt="javascript" />
+                </li>
+                <li>
+                  <img src="./image/REACT.svg" alt="REACT" />
+                </li>
+                <li>
+                  <img src="./image/NODE.svg" alt="NODE" />
+                </li>
+                <li>
+                  <img src="./image/AWS.svg" alt="AWS" />
+                </li>
+                <li>
+                  <img src="./image/FIREBASE.svg" alt="FIREBASE" />
+                </li>
+                <li>
+                  <img src="./image/GITHUBSKILL.svg" alt="GITHUB" />
+                </li>
+                <li>
+                  <img src="./image/ETC.svg" alt="ETC" />
+                </li>
+              </ul>
+              <div class="tapBox"></div>
+            </article>
+            <article class="aboutCommonright profile">
+              <div class="profileBox">
+                <img src="./image/profile.jpg" alt="프로필" />
+              </div>
+            </article>
+          </section>
+
+          <!-- 하단 -->
+          <section class="aboutCommon aboutBottom">
+            <article class="aboutCommonleft left">
+              <h2 class="aboutCommontitle title">Education.</h2>
+              <div class="contentCon">
+                <div class="contentList">
+                  <h3 class="date">2022.12.19 ~ 2023.06.27</h3>
+                  <p class="contentTitle">그린 컴퓨터 아카데미</p>
+                  <p class="content">
+                    &#60;산대특&#62;리엑트(React) <br />
+                    리엑트네이티브 EXPO 활용 프론트앤드개발자 양성과정
+                  </p>
+                </div>
+                <div class="contentList">
+                  <h3 class="date">2013.03 ~ 2015.02</h3>
+                  <p class="contentTitle">대전과학기술대학교</p>
+                  <p class="content">외식조리제빵계열- 조리전공</p>
+                </div>
+              </div>
+            </article>
+            <article class="aboutCommonright right">
+              <h2 class="aboutCommontitle title">Certificate.</h2>
+              <div class="contentCon">
+                <div class="contentList">
+                  <h3 class="date">2023.04</h3>
+                  <p class="contentTitle">웹디자인기능사</p>
+                </div>
+                <div class="contentList">
+                  <h3 class="date">2022.07</h3>
+                  <p class="contentTitle">컴퓨터그래픽스운용기능사</p>
+                </div>
+              </div>
+            </article>
+          </section>
+        </main>
+        <!-- poroject -->
+        <main class="Project">
+          <section class="contentCon">
+            <ul>
+              <!-- 프로젝트1번 -->
+              <li class="project1">
+                <h2>#01</h2>
+                <div class="left">
+                  <p class="title">WITH(장애인편의시설제공웹사이트)</p>
+                  <p class="subtitle">RESPONSIVE WEBSITE</p>
+                  <p class="content">
+                    React 기반으로 기획 및 사이트 제작 <br />
+                    장애를 가지고 있는 분 또는 가족, 지인이 이동할 위치에 맞는
+                    <br />
+                    장애인 편의시설을 한눈에 확인 할 수 있도록 검색 사이트 제작
+                  </p>
+                  <p class="hastag">
+                    <span>#React</span><span>#KAKAOMAP API</span>
+                  </p>
+                  <div class="btnCon">
+                    <a href="#none" class="btn">Demo</a>
+                    <a href="#none" class="btn">Github</a>
+                  </div>
+                </div>
+                <div class="right">
+                  <img src="./image/project1.png" alt="project1" />
+                </div>
               </li>
-              <li>
-                <img src="./image/CSS.svg" alt="CSS" />
+              <!-- 프로젝트2번 -->
+              <li class="project2">
+                <h2>#02</h2>
+                <div class="left">
+                  <p class="title">버릴수 없는 구매욕구</p>
+                  <p class="subtitle">MOBILE FIXED</p>
+                  <p class="content">
+                    Node.js로 CRUD 구현 <br />
+                    Express 라이브러리를 사용하였으며 데이터베이스로 MongoDB
+                    사용
+                  </p>
+                  <p class="hastag">
+                    <span>#EJS</span><span>#CSS</span>
+                    <span>#Javascript</span>
+                    <span>#Node</span>
+                    <span>#Express</span>
+                    <span>#MongoDB</span>
+                  </p>
+                  <div class="btnCon">
+                    <a href="#none" class="btn">Demo</a>
+                    <a href="#none" class="btn">Github</a>
+                  </div>
+                </div>
+                <div class="right">
+                  <img src="./image/project2.png" alt="project2" />
+                </div>
               </li>
-              <li>
-                <img src="./image/JS.svg" alt="javascript" />
+              <!-- 프로젝트3번 -->
+              <li class="project3">
+                <h2>#03</h2>
+                <div class="left">
+                  <p class="title">HAPPY GIFT</p>
+                  <p class="subtitle">MOBILE FIXED</p>
+                  <p class="content">
+                    Chat Opne API를 활용한 선물 추천 웹앱 개발 <br />
+                    대화형식으로 추가 질문이 가능
+                  </p>
+                  <p class="hastag">
+                    <span>#HTML</span><span>#CSS</span>
+                    <span>#Javascript</span>
+                  </p>
+                  <div class="btnCon">
+                    <a href="#none" class="btn">Demo</a>
+                    <a href="#none" class="btn">Github</a>
+                  </div>
+                </div>
+                <div class="right">
+                  <img src="./image/project3.png" alt="project3" />
+                </div>
               </li>
-              <li>
-                <img src="./image/REACT.svg" alt="REACT" />
+              <!-- 프로젝트4번 -->
+              <li class="project4">
+                <h2>#04</h2>
+                <div class="left">
+                  <p class="title">술담화 홈페이지 리뉴얼</p>
+                  <p class="subtitle">RESPONSIVE WEBSITE</p>
+                  <p class="content">
+                    웹사이트에 맞는 홈페이지의 레이아웃 변형과 <br />
+                    사이트에 들어왔을 때 회사에 대해 알리는 것을 중점으로 반응형
+                    리뉴얼 <br />
+                    외부 라이브러리 사용 <br />
+                    <span>Swiper</span>
+                  </p>
+                  <p class="hastag">
+                    <span>#HTML</span><span>#CSS</span>
+                    <span>#Javascript</span>
+                  </p>
+                  <div class="btnCon">
+                    <a href="#none" class="btn">Demo</a>
+                    <a href="#none" class="btn">Github</a>
+                  </div>
+                </div>
+                <div class="right">
+                  <img src="./image/project4.png" alt="project4" />
+                </div>
               </li>
-              <li>
-                <img src="./image/NODE.svg" alt="NODE" />
+              <!-- 프로젝트5번 -->
+              <li class="project5">
+                <h2>#05</h2>
+                <div class="left">
+                  <p class="title">대전시민천문대 리뉴얼</p>
+                  <p class="subtitle">RESPONSIVE WEBSITE</p>
+                  <p class="content">
+                    홈페이지를 이용자의 편의성을 증대하기 위한 UI 개선
+                    <br />
+                    1. 중복되는 메뉴 구조와 복잡한 사이트맵의 재구성 <br />
+                    2. 반응형에 무너지지않는 레이아웃
+                  </p>
+                  <p class="hastag">
+                    <span>#HTML</span><span>#CSS</span><span>#Javascript</span>
+                  </p>
+                  <div class="btnCon">
+                    <a href="#none" class="btn">Demo</a>
+                    <a href="#none" class="btn">Github</a>
+                  </div>
+                </div>
+                <div class="right">
+                  <img src="./image/project5.png" alt="project5" />
+                </div>
               </li>
-              <li>
-                <img src="./image/AWS.svg" alt="AWS" />
-              </li>
-              <li>
-                <img src="./image/FIREBASE.svg" alt="FIREBASE" />
-              </li>
-              <li>
-                <img src="./image/GITHUBSKILL.svg" alt="GITHUB" />
-              </li>
-              <li>
-                <img src="./image/ETC.svg" alt="ETC" />
+              <!-- 프로젝트6번 -->
+              <li class="project6">
+                <h2>#06</h2>
+                <div class="left">
+                  <p class="title">스타벅스 클론코딩</p>
+                  <p class="subtitle">FIXED WEBSITE</p>
+                  <p class="content">
+                    외부 라이브러리를 사용한 스타벅스 클론코딩
+                    <br />
+                    <span>Swiper</span> <br />
+                    <span> GSAP & ScrollToPlugin </span> <br />
+                    <span>ScrollMagic</span>
+                  </p>
+                  <p class="hastag">
+                    <span>#HTML</span><span>#CSS</span><span>#Javascript</span>
+                  </p>
+                  <div class="btnCon">
+                    <a href="#none" class="btn">Demo</a>
+                    <a href="#none" class="btn">Github</a>
+                  </div>
+                </div>
+                <div class="right">
+                  <img src="./image/project6.png" alt="project6" />
+                </div>
               </li>
             </ul>
-            <div class="tapBox"></div>
-          </article>
-          <article class="aboutCommonright profile">
-            <div class="profileBox">
-              <img src="./image/profile.jpg" alt="프로필" />
-            </div>
-          </article>
-        </section>
+            <div class="dotnavi"></div>
+          </section>
+        </main>
+        <!-- Connect -->
+        <main class="Connect">
+          <p class="txt">
+            개발자에 배움의 끝은 없다고 생각합니다 <br />
+            끝이없는 발전을 보고싶으시다면 언제든 연락주세요
+          </p>
 
-        <!-- 하단 -->
-        <section class="aboutCommon aboutBottom">
-          <article class="aboutCommonleft left">
-            <h2 class="aboutCommontitle title">Education.</h2>
-            <div class="contentCon">
-              <div class="contentList">
-                <p class="date">2022.12.19 ~ 2023.06.27</p>
-                <p class="title">그린 컴퓨터 아카데미</p>
-                <p class="content">
-                  &#60;산대특&#62;리엑트(React) <br />
-                  리엑트네이티브 EXPO 활용 프론트앤드개발자 양성과정
-                </p>
-              </div>
-              <div class="contentList">
-                <p class="date">2013.03 ~ 2015.02</p>
-                <p class="title">대전과학기술대학교</p>
-                <p class="content">외식조리제빵계열- 조리전공</p>
-              </div>
-            </div>
-          </article>
-          <article class="aboutCommonright right">
-            <h2 class="aboutCommontitle title">Certificate.</h2>
-            <div class="contentCon">
-              <div class="contentList">
-                <p class="date">2023.04</p>
-                <p class="title">웹디자인기능사</p>
-              </div>
-              <div class="contentList">
-                <p class="date">2022.07</p>
-                <p class="title">컴퓨터그래픽스운용기능사</p>
-              </div>
-            </div>
-          </article>
-        </section>
-      </main>
-      <!-- poroject -->
-      <main class="Project mw">
-        <section class="contentCon">
-          <ul>
-            <!-- 프로젝트1번 -->
-            <li class="project1">
-              <h2>#01</h2>
-              <div class="left">
-                <p class="title">WITH(장애인편의시설제공웹사이트)</p>
-                <p class="subtitle">RESPONSIVE WEBSITE</p>
-                <p class="content">
-                  React 기반으로 기획 및 사이트 제작 <br />
-                  장애를 가지고 있는 분 또는 가족, 지인이 이동할 위치에 맞는
-                  <br />
-                  장애인 편의시설을 한눈에 확인 할 수 있도록 검색 사이트 제작
-                </p>
-                <p class="hastag">
-                  <span>#React</span><span>#KAKAOMAP API</span>
-                </p>
-                <div class="btnCon">
-                  <a href="#none" class="btn">Demo</a>
-                  <a href="#none" class="btn">Github</a>
-                </div>
-              </div>
-              <div class="right">
-                <img src="./image/project1.png" alt="project1" />
-              </div>
-            </li>
-            <!-- 프로젝트2번 -->
-            <li class="project2">
-              <h2>#02</h2>
-              <div class="left">
-                <p class="title">버릴수 없는 구매욕구</p>
-                <p class="subtitle">MOBILE FIXED</p>
-                <p class="content">
-                  Node.js로 CRUD 구현 <br />
-                  Express 라이브러리를 사용하였으며 데이터베이스로 MongoDB 사용
-                </p>
-                <p class="hastag">
-                  <span>#EJS</span><span>#CSS</span>
-                  <span>#Javascript</span>
-                  <span>#Node</span>
-                  <span>#Express</span>
-                  <span>#MongoDB</span>
-                </p>
-                <div class="btnCon">
-                  <a href="#none" class="btn">Demo</a>
-                  <a href="#none" class="btn">Github</a>
-                </div>
-              </div>
-              <div class="right">
-                <img src="./image/project2.png" alt="project2" />
-              </div>
-            </li>
-            <!-- 프로젝트3번 -->
-            <li class="project3">
-              <h2>#03</h2>
-              <div class="left">
-                <p class="title">HAPPY GIFT</p>
-                <p class="subtitle">MOBILE FIXED</p>
-                <p class="content">
-                  Chat Opne API를 활용한 선물 추천 웹앱 개발 <br />
-                  대화형식으로 추가 질문이 가능
-                </p>
-                <p class="hastag">
-                  <span>#HTML</span><span>#CSS</span>
-                  <span>#Javascript</span>
-                </p>
-                <div class="btnCon">
-                  <a href="#none" class="btn">Demo</a>
-                  <a href="#none" class="btn">Github</a>
-                </div>
-              </div>
-              <div class="right">
-                <img src="./image/project3.png" alt="project3" />
-              </div>
-            </li>
-            <!-- 프로젝트4번 -->
-            <li class="project4">
-              <h2>#04</h2>
-              <div class="left">
-                <p class="title">술담화 홈페이지 리뉴얼</p>
-                <p class="subtitle">RESPONSIVE WEBSITE</p>
-                <p class="content">
-                  웹사이트에 맞는 홈페이지의 레이아웃 변형과 <br />
-                  사이트에 들어왔을 때 회사에 대해 알리는 것을 중점으로 반응형
-                  리뉴얼 <br />
-                  외부 라이브러리 사용 <br />
-                  <span>Swiper</span>
-                </p>
-                <p class="hastag">
-                  <span>#HTML</span><span>#CSS</span>
-                  <span>#Javascript</span>
-                </p>
-                <div class="btnCon">
-                  <a href="#none" class="btn">Demo</a>
-                  <a href="#none" class="btn">Github</a>
-                </div>
-              </div>
-              <div class="right">
-                <img src="./image/project4.png" alt="project4" />
-              </div>
-            </li>
-            <!-- 프로젝트5번 -->
-            <li class="project5">
-              <h2>#05</h2>
-              <div class="left">
-                <p class="title">대전시민천문대 리뉴얼</p>
-                <p class="subtitle">RESPONSIVE WEBSITE</p>
-                <p class="content">
-                  홈페이지를 이용자의 편의성을 증대하기 위한 UI 개선
-                  <br />
-                  1. 중복되는 메뉴 구조와 복잡한 사이트맵의 재구성 <br />
-                  2. 반응형에 무너지지않는 레이아웃
-                </p>
-                <p class="hastag">
-                  <span>#HTML</span><span>#CSS</span><span>#Javascript</span>
-                </p>
-                <div class="btnCon">
-                  <a href="#none" class="btn">Demo</a>
-                  <a href="#none" class="btn">Github</a>
-                </div>
-              </div>
-              <div class="right">
-                <img src="./image/project5.png" alt="project5" />
-              </div>
-            </li>
-            <!-- 프로젝트6번 -->
-            <li class="project6">
-              <h2>#06</h2>
-              <div class="left">
-                <p class="title">스타벅스 클론코딩</p>
-                <p class="subtitle">FIXED WEBSITE</p>
-                <p class="content">
-                  외부 라이브러리를 사용한 스타벅스 클론코딩
-                  <br />
-                  <span>Swiper</span> <br />
-                  <span> GSAP & ScrollToPlugin </span> <br />
-                  <span>ScrollMagic</span>
-                </p>
-                <p class="hastag">
-                  <span>#HTML</span><span>#CSS</span><span>#Javascript</span>
-                </p>
-                <div class="btnCon">
-                  <a href="#none" class="btn">Demo</a>
-                  <a href="#none" class="btn">Github</a>
-                </div>
-              </div>
-              <div class="right">
-                <img src="./image/project6.png" alt="project6" />
-              </div>
-            </li>
-          </ul>
-          <div class="dotnavi"></div>
-        </section>
-      </main>
-      <!-- Connect -->
-      <main class="Connect mw">
-        <p class="txt">
-          개발자에 배움의 끝은 없다고 생각합니다 <br />
-          끝이없는 발전을 보고싶으시다면 언제든 연락주세요
-        </p>
-
-        <h2 class="title">두다리로 발빠르게 찾아가겠습니다!</h2>
-        <p class="txt">Email : dmsthf9596@gmail.com</p>
-        <p class="txt">
-          kakao :
-          <a
-            href="https://open.kakao.com/o/sSuJAGpf"
-            target="_blank"
-            class="alink"
-            >여기에요 여기! 저를 클릭해주세요:)
-          </a>
-        </p>
-      </main>
-
+          <h2 class="title">두다리로 발빠르게 찾아가겠습니다!</h2>
+          <p class="txt">Email : dmsthf9596@gmail.com</p>
+          <p class="txt">
+            kakao :
+            <a
+              href="https://open.kakao.com/o/sSuJAGpf"
+              target="_blank"
+              class="alink"
+              >여기에요 여기! 저를 클릭해주세요:)
+            </a>
+          </p>
+        </main>
+      </div>
       <!-- footer -->
-      <p class="copyWriter">@ 2023. Eunsoly All rights reserved.</p>
+      <footer>
+        <p class="copyWriter">@ 2023. Eunsoly All rights reserved.</p>
+      </footer>
     </div>
   </body>
 </html>
