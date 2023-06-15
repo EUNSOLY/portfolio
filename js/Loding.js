@@ -19,10 +19,8 @@ ctx.fill();
 
 // 안내 문구 추가
 const text = "Portfolio \n Drow";
-// const text = "긁어주세용";
 const fontSize = 5;
 const fontFamily = "PilseungGothic";
-
 ctx.font = `${fontSize}vw ${fontFamily}`;
 ctx.fillStyle = "#fff";
 ctx.textAlign = "center";
