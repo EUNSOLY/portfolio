@@ -289,13 +289,14 @@ header .gnb a.on::before {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border: 4px solid red;
+  border: 4px solid dodgerblue;
+  position: relative;
+  padding: 2rem 0;
 }
 .Project .contentCon ul {
-  width: calc(100% * 6);
+  width: 300%;
   margin-top: 1rem;
   display: flex;
-  border: 2px solid dodgerblue;
 }
 .Project .contentCon li {
   display: flex;
@@ -305,7 +306,7 @@ header .gnb a.on::before {
   border: 1px solid red;
 }
 
-.Project .contentCon li:nth-of-type(6) ~ li {
+.Project .contentCon li:nth-of-type(3) ~ li {
   display: none;
 }
 .Project .contentCon li h2 {
@@ -389,11 +390,11 @@ header .gnb a.on::before {
 }
 /* 도트 */
 .Project .contentCon .dotnavi {
-  /* border: 1px solid red; */
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 2rem 0;
+  border: 1px solid blue;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translate(-120px);
 }
 .Project .contentCon .dotnavi span {
   width: 15px;
@@ -401,9 +402,13 @@ header .gnb a.on::before {
   border-radius: 50%;
   background-color: #ffffff20;
   margin-right: var(--gapS);
+  position: absolute;
 }
 .Project .contentCon .dotnavi span.on {
   background-color: #fff;
+}
+.Project .contentCon .dotnavi span:nth-of-type(2) {
+  /* left: 60px; */
 }
 /* ConneEct */
 .Connect.on {

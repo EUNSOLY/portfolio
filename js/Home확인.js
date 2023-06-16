@@ -2,46 +2,90 @@ const $slideCon = document.querySelector(".contentCon ul");
 const $slides = document.querySelectorAll(".contentCon li");
 const $dotNav = document.querySelector(".dotnavi");
 const $dotNavSpan = $dotNav.querySelectorAll("span");
-const footer = document.querySelector(".copyWriter");
 let slideWidth;
-
-let dotIndex = ""; // 도트 초기화
-let intervalId; // interval초기화셋팅
 // 싱글페이지 구현으로 라우트기능
-const headLink = document.querySelectorAll(".gnb > a");
-const slideText = document.querySelector(".slideText");
-const texts = ["끊임없이 도전하는", "끊임없이 성장하는", "오늘과 내일이 다른"]; // 변경할 글자들
-let currentIndex = 0;
-slideText.textContent = texts[currentIndex];
-
-// URL가져오기
 function getCurrentURL() {
   return window.location.pathname;
 }
-// 라우팅함수
-// function showMenu(menuId) {
-//   const menu = document.querySelectorAll("main");
-//   menu.forEach((menu) => {
-//     menu.classList.remove("on");
-//   });
-//   const selectedMenu = document.querySelector(`.${menuId}`);
-//   selectedMenu.classList.add("on");
-//   if (menuId == "/") {
-//     const selectedMenu = document.querySelector("main.Home");
-//     selectedMenu.classList.add("on");
-//   }
-//   if (menuId == "Project") {
-//     slideWidth = $slides[0].offsetWidth; // 슬라이드 1개의 크기
-//     // 프로젝트 슬라이드 구현
-//   }
-// }
+const headLink = document.querySelectorAll(".gnb > a");
+const footer = document.querySelector(".copyWriter");
 
-// HOME 자기소개 자동슬라이드
-function slideTextAnimation() {
-  currentIndex = (currentIndex + 1) % texts.length;
-  slideText.textContent = texts[currentIndex];
+function showMenu(menuId) {
+  const menu = document.querySelectorAll("main");
+  menu.forEach((menu) => {
+    menu.classList.remove("on");
+  });
+  const selectedMenu = document.querySelector(`.${menuId}`);
+  selectedMenu.classList.add("on");
+  if (menuId == "/") {
+    const selectedMenu = document.querySelector("main.Home");
+    selectedMenu.classList.add("on");
+  }
+  if (menuId == "Project") {
+    slideWidth = $slides[0].offsetWidth; // 슬라이드 1개의 크기
+    // 프로젝트 슬라이드 구현
+  }
 }
-setInterval(slideTextAnimation, 2500);
+
+let currentSlide = 0; // 증가값 초기화
+let sliderCount = $slides.length; // 슬라이드 갯수
+let dotIndex = ""; // 도트 초기화
+let intervalId; // interval초기화셋팅
+
+$slides.forEach((item, i) => {
+  i === currentSlide ? (active = "on") : (active = "");
+  dotIndex += `<span class='dot ${active}' data-index="${i}"></span>`;
+  $dotNav.innerHTML = dotIndex;
+});
+// 화면크기에 따른 슬라이드 반응형
+window.addEventListener("resize", () => {
+  slideWidth = $slides[0].offsetWidth;
+});
+
+// 도트 실행
+function dotActive() {
+  let $dot = $dotNav.querySelectorAll("span");
+  $dot.forEach((item, i) => {
+    item.classList.remove("on");
+    $dot[currentSlide].classList.add("on");
+  });
+}
+
+// 도트클릭이벤트
+let $dot = $dotNav.querySelectorAll("span");
+$dot.forEach((dot, i) => {
+  dot.addEventListener("click", () => {
+    const clickedIndex = dot.getAttribute("data-index");
+    currentSlide = parseInt(clickedIndex) - 1;
+    clearInterval(intervalId);
+    moveSlide();
+    intervalId = setInterval(moveSlide, 3000);
+  });
+});
+
+//슬라이드구현
+$slideCon.appendChild($slides[0].cloneNode(true)); // 첫 번째 슬라이드를 복사하여 뒤에 추가
+
+// 슬라이드 콜백함수
+function moveSlide() {
+  $slideCon.style.transition = "0.5s";
+  $slideCon.style.marginLeft = `-${slideWidth * (currentSlide + 1)}px`;
+
+  currentSlide++;
+
+  if (currentSlide === sliderCount) {
+    // 마지막 슬라이드에 도달한 경우 첫 번째 슬라이드로 되돌아감
+    setTimeout(() => {
+      $slideCon.style.transition = "none";
+      $slideCon.style.marginLeft = "0";
+      // 첫 번째 슬라이드 복사본 삭제
+    }, 300);
+    currentSlide = 0;
+  }
+  dotActive(currentSlide);
+}
+
+intervalId = setInterval(moveSlide, 3000); // 자동슬라이드 실행
 
 // 라우트기능
 headLink.forEach((link, i) => {
@@ -56,7 +100,21 @@ headLink.forEach((link, i) => {
     link.classList.add("on");
   });
 });
-// showMenu("Home");
+showMenu("Home");
+
+const slideText = document.querySelector(".slideText");
+const texts = ["끊임없이 도전하는", "끊임없이 성장하는", "오늘과 내일이 다른"]; // 변경할 글자들
+let currentIndex = 0;
+
+slideText.textContent = texts[currentIndex];
+
+// HOME 자기소개 자동슬라이드
+function slideTextAnimation() {
+  currentIndex = (currentIndex + 1) % texts.length;
+  slideText.textContent = texts[currentIndex];
+}
+
+setInterval(slideTextAnimation, 2500);
 
 // 스킬텝메뉴 구현
 const $tapBox = document.querySelector(".tapBox");
@@ -140,38 +198,3 @@ fetch("./data/skillTextData.json")
     // 오류 처리
     console.log("Error:", error);
   });
-
-// 슬라이드 시작
-let currentSlide = 0; // 증가값 초기화
-let sliderCount = $slides.length; // 슬라이드 갯수
-// 화면크기에 따른 슬라이드 반응형
-window.addEventListener("resize", () => {
-  slideWidth = $slides[0].offsetWidth;
-});
-let action;
-// 슬라이드 갯수만큼 도트 생성
-$slides.forEach((item, i) => {
-  item.dataset.index = i + 1;
-  dotIndex += `<span class='dot${i + 1}' data-index="${i}" style=" left :${
-    (i + 1) * 30
-  }px;"></span>`;
-});
-$dotNav.innerHTML = dotIndex;
-
-// 라우트 기능 오픈시 삭제 코드
-slideWidth = $slides[0].offsetWidth;
-// const $slideCon = document.querySelector(".contentCon ul");
-// const $slides = document.querySelectorAll(".contentCon li");
-// 자동슬라이드 콜백함수
-function loopMove() {
-  $slideCon.style.transition = "0.5s";
-  $slideCon.style.marginLeft = `-${slideWidth}px`;
-
-  setTimeout(() => {
-    $slideCon.appendChild($slideCon.firstElementChild);
-    $slideCon.style.transition = "none";
-    $slideCon.style.marginLeft = "0";
-  }, 500);
-}
-
-intervalId = setInterval(loopMove, 3000);
