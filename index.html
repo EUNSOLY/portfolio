@@ -30,9 +30,9 @@
       window.addEventListener("load", function () {
         if (!localStorage.getItem("refreshed")) {
           localStorage.setItem("refreshed", "true");
-          location.reload(); // Perform one-time forced refresh
+          location.reload();
         } else {
-          localStorage.removeItem("refreshed"); // Remove the flag
+          localStorage.removeItem("refreshed");
         }
       });
     </script>
