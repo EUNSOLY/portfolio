@@ -1,0 +1,11 @@
+if (dataIndex.length === sliderCount) {
+  return false;
+} else {
+  // 도트 생성
+}
+3;
+
+let dataIndex = [];
+$dotNavSpan.forEach((item, i) => {
+  dataIndex.push(item.dataset.index);
+});
