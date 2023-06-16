@@ -19,22 +19,22 @@ function getCurrentURL() {
   return window.location.pathname;
 }
 // 라우팅함수
-// function showMenu(menuId) {
-//   const menu = document.querySelectorAll("main");
-//   menu.forEach((menu) => {
-//     menu.classList.remove("on");
-//   });
-//   const selectedMenu = document.querySelector(`.${menuId}`);
-//   selectedMenu.classList.add("on");
-//   if (menuId == "/") {
-//     const selectedMenu = document.querySelector("main.Home");
-//     selectedMenu.classList.add("on");
-//   }
-//   if (menuId == "Project") {
-//     slideWidth = $slides[0].offsetWidth; // 슬라이드 1개의 크기
-//     // 프로젝트 슬라이드 구현
-//   }
-// }
+function showMenu(menuId) {
+  const menu = document.querySelectorAll("main");
+  menu.forEach((menu) => {
+    menu.classList.remove("on");
+  });
+  const selectedMenu = document.querySelector(`.${menuId}`);
+  selectedMenu.classList.add("on");
+  if (menuId == "/") {
+    const selectedMenu = document.querySelector("main.Home");
+    selectedMenu.classList.add("on");
+  }
+  if (menuId == "Project") {
+    slideWidth = $slides[0].offsetWidth; // 슬라이드 1개의 크기
+    // 프로젝트 슬라이드 구현
+  }
+}
 
 // HOME 자기소개 자동슬라이드
 function slideTextAnimation() {
@@ -56,7 +56,7 @@ headLink.forEach((link, i) => {
     link.classList.add("on");
   });
 });
-// showMenu("Home");
+showMenu("Home");
 
 // 스킬텝메뉴 구현
 const $tapBox = document.querySelector(".tapBox");
@@ -159,7 +159,7 @@ $slides.forEach((item, i) => {
 $dotNav.innerHTML = dotIndex;
 
 // 라우트 기능 오픈시 삭제 코드
-slideWidth = $slides[0].offsetWidth;
+// slideWidth = $slides[0].offsetWidth;
 // const $slideCon = document.querySelector(".contentCon ul");
 // const $slides = document.querySelectorAll(".contentCon li");
 // 자동슬라이드 콜백함수
