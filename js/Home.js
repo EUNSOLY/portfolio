@@ -26,13 +26,18 @@ function showMenu(menuId) {
   });
   const selectedMenu = document.querySelector(`.${menuId}`);
   selectedMenu.classList.add("on");
-  if (menuId == "/") {
-    const selectedMenu = document.querySelector("main.Home");
-    selectedMenu.classList.add("on");
+  const $copyWriter = document.querySelector(".copyWriter");
+  if (menuId == "About") {
+    $copyWriter.classList.add("block");
+  } else {
+    $copyWriter.classList.remove("block");
   }
   if (menuId == "Project") {
     slideWidth = $slides[0].offsetWidth; // 슬라이드 1개의 크기
-    // 프로젝트 슬라이드 구현
+    if (selectedMenu) {
+      slideSet(slideWidth);
+    } else {
+    }
   }
 }
 
@@ -141,64 +146,73 @@ fetch("./data/skillTextData.json")
     console.log("Error:", error);
   });
 
-// 슬라이드 시작
-let currentSlide = 0; // 증가값 초기화
-let sliderCount = $slides.length; // 슬라이드 갯수
-// 화면크기에 따른 슬라이드 반응형
-window.addEventListener("resize", () => {
-  slideWidth = $slides[0].offsetWidth;
-});
-
-// 슬라이드 갯수만큼 도트 생성
-$slides.forEach((item, i) => {
-  item.dataset.index = i + 1;
-  dotIndex += `<span class='dot${i + 1}' data-index="${i}" style=" left :${
-    (i + 1) * 30
-  }px;"></span>`;
-});
-$dotNav.innerHTML = dotIndex;
-
-// 개별 도트 담기
-const $dotNavSpan = $dotNav.querySelectorAll("span");
-
-// 도트 클릭이벤트
-$dotNavSpan.forEach((dot, i) => {
-  dot.addEventListener("click", (e) => {
-    const nodes = [...e.target.parentElement.children];
-    const index = nodes.indexOf(e.target);
-    console.log(index);
-    dotActive(index);
-    nextMove(index);
+// 슬라이드콜백함수
+function slideSet(slideWidth) {
+  // 도트 초기화
+  $dotNav.innerHTML = "";
+  // 슬라이드 갯수만큼 도트 생성
+  $slides.forEach((item, i) => {
+    item.dataset.index = i + 1;
+    dotIndex += `<span class='dot${i + 1}' data-index="${
+      i + 1
+    }" style=" left :${(i + 1) * 30}px;"></span>`;
   });
-});
-// 도트 클릭 시 실행함수
 
-let $dot = $dotNav.querySelectorAll("span");
-function dotActive(i) {
-  for (let b = 0; b < i; b++) {
+  $dotNav.innerHTML = dotIndex;
+
+  // 개별 도트 담기
+  let $dotNavSpan = $dotNav.querySelectorAll("span");
+
+  // 도트 클릭이벤트
+  $dotNavSpan.forEach((dot, i) => {
+    dot.addEventListener("click", (e) => {
+      const nodes = [...e.target.parentElement.children];
+      const index = nodes.indexOf(e.target);
+      dotActive(index);
+      nextMove(index);
+    });
+  });
+  // 도트 클릭 시 실행함수
+
+  function dotActive(i) {
+    for (let b = 0; b < i; b++) {
+      $dotNav.appendChild($dotNavSpan[0]);
+      $dotNavSpan = $dotNav.querySelectorAll("span");
+    }
+  }
+  function nextMove(i) {
+    for (let b = 0; b < i; b++) {
+      $slideCon.appendChild($slideCon.firstElementChild);
+    }
+    $slideCon.style.marginLeft = "0px";
+  }
+
+  // 자동슬라이드 콜백함수
+  function loopMove() {
     $dotNav.appendChild($dotNavSpan[0]);
-    $dot = $dotNav.querySelectorAll("span");
+    $dotNavSpan = $dotNav.querySelectorAll("span");
+    $slideCon.style.transition = "0.5s";
+    $slideCon.style.marginLeft = `-${slideWidth}px`;
+
+    setTimeout(() => {
+      $slideCon.appendChild($slideCon.firstElementChild);
+      $slideCon.style.transition = "none";
+      $slideCon.style.marginLeft = "0";
+    }, 800);
   }
-}
-function nextMove(i) {
-  for (let b = 0; b < i; b++) {
-    $slideCon.appendChild($slideCon.firstElementChild);
-  }
-  $slideCon.style.marginLeft = "0px";
-  clearInterval(intervalId);
+
   intervalId = setInterval(loopMove, 3000);
+
+  // 화면 크기에 따른 슬라이드 반응형
+  function handleResize() {
+    slideWidth = $slides[0].offsetWidth;
+    $slideCon.style.marginLeft = "0px"; // 슬라이드 위치 초기화
+    clearInterval(intervalId); // 이전 interval 제거
+    intervalId = setInterval(loopMove, 3000); // 새로운 interval 시작
+  }
+
+  window.addEventListener("resize", handleResize); // resize 이벤트 핸들러 등록
+
+  // 초기 호출
+  handleResize();
 }
-
-// 자동슬라이드 콜백함수
-function loopMove() {
-  $slideCon.style.transition = "0.5s";
-  $slideCon.style.marginLeft = `-${slideWidth}px`;
-
-  setTimeout(() => {
-    $slideCon.appendChild($slideCon.firstElementChild);
-    $slideCon.style.transition = "none";
-    $slideCon.style.marginLeft = "0";
-  }, 500);
-}
-
-intervalId = setInterval(loopMove, 3000);
