@@ -1,7 +1,7 @@
 const $slideCon = document.querySelector(".contentCon ul");
 const $slides = document.querySelectorAll(".contentCon li");
 const $dotNav = document.querySelector(".dotnavi");
-const $dotNavSpan = $dotNav.querySelectorAll("span");
+
 const footer = document.querySelector(".copyWriter");
 let slideWidth;
 
@@ -148,7 +148,7 @@ let sliderCount = $slides.length; // 슬라이드 갯수
 window.addEventListener("resize", () => {
   slideWidth = $slides[0].offsetWidth;
 });
-let action;
+
 // 슬라이드 갯수만큼 도트 생성
 $slides.forEach((item, i) => {
   item.dataset.index = i + 1;
@@ -158,10 +158,37 @@ $slides.forEach((item, i) => {
 });
 $dotNav.innerHTML = dotIndex;
 
-// 라우트 기능 오픈시 삭제 코드
-// slideWidth = $slides[0].offsetWidth;
-// const $slideCon = document.querySelector(".contentCon ul");
-// const $slides = document.querySelectorAll(".contentCon li");
+// 개별 도트 담기
+const $dotNavSpan = $dotNav.querySelectorAll("span");
+
+// 도트 클릭이벤트
+$dotNavSpan.forEach((dot, i) => {
+  dot.addEventListener("click", (e) => {
+    const nodes = [...e.target.parentElement.children];
+    const index = nodes.indexOf(e.target);
+    console.log(index);
+    dotActive(index);
+    nextMove(index);
+  });
+});
+// 도트 클릭 시 실행함수
+
+let $dot = $dotNav.querySelectorAll("span");
+function dotActive(i) {
+  for (let b = 0; b < i; b++) {
+    $dotNav.appendChild($dotNavSpan[0]);
+    $dot = $dotNav.querySelectorAll("span");
+  }
+}
+function nextMove(i) {
+  for (let b = 0; b < i; b++) {
+    $slideCon.appendChild($slideCon.firstElementChild);
+  }
+  $slideCon.style.marginLeft = "0px";
+  clearInterval(intervalId);
+  intervalId = setInterval(loopMove, 3000);
+}
+
 // 자동슬라이드 콜백함수
 function loopMove() {
   $slideCon.style.transition = "0.5s";

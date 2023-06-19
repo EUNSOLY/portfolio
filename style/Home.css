@@ -403,13 +403,15 @@ header .gnb a.on::before {
   background-color: #ffffff20;
   margin-right: var(--gapS);
   position: absolute;
+  cursor: pointer;
 }
-.Project .contentCon .dotnavi span.on {
+.Project .contentCon .dotnavi span:hover {
+  background-color: #00b2ff50;
+}
+.Project .contentCon .dotnavi span:first-of-type {
   background-color: #fff;
 }
-.Project .contentCon .dotnavi span:nth-of-type(2) {
-  /* left: 60px; */
-}
+
 /* ConneEct */
 .Connect.on {
   display: flex;
