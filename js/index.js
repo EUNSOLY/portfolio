@@ -39,7 +39,7 @@ lines.forEach((line, index) => {
 
 // 초기값
 let isDrawing = false;
-const erasingThreshold = 0.65; // 60% 지워졌을 때의 비율
+const erasingThreshold = 0.45; // 60% 지워졌을 때의 비율
 // 마우스 이벤트 핸들러
 function mouseDownHandler(e) {
   isDrawing = true;

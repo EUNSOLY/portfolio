@@ -34,10 +34,20 @@ function showMenu(menuId) {
   }
   if (menuId == "Project") {
     slideWidth = $slides[0].offsetWidth; // 슬라이드 1개의 크기
-    if (selectedMenu) {
-      slideSet(slideWidth);
-    } else {
-    }
+    console.log(slideWidth, "프로제트");
+    // 슬라이드 갯수만큼 도트 생성
+    $slides.forEach((item, i) => {
+      item.dataset.index = i + 1;
+      dotIndex += `<span class='dot${i + 1}' data-index="${
+        i + 1
+      }" style=" left :${(i + 1) * 30}px;"></span>`;
+    });
+    $dotNav.innerHTML = dotIndex;
+    slideSet();
+  } else {
+    dotIndex = ""; // 도트 초기화
+    $dotNav.innerHTML = ""; // 도트 삭제
+    clearInterval(intervalId);
   }
 }
 
@@ -63,6 +73,68 @@ headLink.forEach((link, i) => {
 });
 showMenu("Home");
 
+// 슬라이드콜백함수
+function slideSet() {
+  slideWidth = $slides[0].offsetWidth;
+  // 개별 도트 담기
+  let $dotNavSpan = $dotNav.querySelectorAll("span");
+
+  // 도트 클릭이벤트
+  $dotNavSpan.forEach((dot, i) => {
+    dot.addEventListener("click", (e) => {
+      const nodes = [...e.target.parentElement.children];
+      const index = nodes.indexOf(e.target);
+      dotActive(index);
+      clearInterval(intervalId); // 이전 interval 제거
+      intervalId = setInterval(loopMove, 6000);
+      nextMove(index);
+    });
+  });
+  // 도트 클릭 시 실행함수
+
+  function dotActive(i) {
+    for (let b = 0; b < i; b++) {
+      $dotNav.appendChild($dotNavSpan[0]);
+      $dotNavSpan = $dotNav.querySelectorAll("span");
+    }
+  }
+  function nextMove(i) {
+    for (let b = 0; b < i; b++) {
+      $slideCon.appendChild($slideCon.firstElementChild);
+    }
+    $slideCon.style.marginLeft = "0px";
+  }
+
+  // 자동슬라이드 콜백함수
+  function loopMove() {
+    $dotNav.appendChild($dotNavSpan[0]);
+    $dotNavSpan = $dotNav.querySelectorAll("span");
+    $slideCon.style.transition = "0.5s";
+    $slideCon.style.marginLeft = `-${slideWidth}px`;
+
+    setTimeout(() => {
+      $slideCon.appendChild($slideCon.firstElementChild);
+      $slideCon.style.transition = "none";
+      $slideCon.style.marginLeft = "0";
+    }, 800);
+  }
+
+  intervalId = setInterval(loopMove, 3000);
+
+  // 화면 크기에 따른 슬라이드 반응형
+  function handleResize() {
+    slideWidth = $slides[0].offsetWidth;
+    $slideCon.style.marginLeft = "0px"; // 슬라이드 위치 초기화
+    clearInterval(intervalId); // 이전 interval 제거
+    intervalId = setInterval(loopMove, 3000); // 새로운 interval 시작
+  }
+  setTimeout(() => {
+    window.addEventListener("resize", handleResize); // resize 이벤트 핸들러 등록
+  }, 200);
+
+  // 초기 호출
+  handleResize();
+}
 // 스킬텝메뉴 구현
 const $tapBox = document.querySelector(".tapBox");
 const $skillIcon = document.querySelectorAll(".skillList > li");
@@ -145,74 +217,3 @@ fetch("./data/skillTextData.json")
     // 오류 처리
     console.log("Error:", error);
   });
-
-// 슬라이드콜백함수
-function slideSet(slideWidth) {
-  // 도트 초기화
-  $dotNav.innerHTML = "";
-  // 슬라이드 갯수만큼 도트 생성
-  $slides.forEach((item, i) => {
-    item.dataset.index = i + 1;
-    dotIndex += `<span class='dot${i + 1}' data-index="${
-      i + 1
-    }" style=" left :${(i + 1) * 30}px;"></span>`;
-  });
-
-  $dotNav.innerHTML = dotIndex;
-
-  // 개별 도트 담기
-  let $dotNavSpan = $dotNav.querySelectorAll("span");
-
-  // 도트 클릭이벤트
-  $dotNavSpan.forEach((dot, i) => {
-    dot.addEventListener("click", (e) => {
-      const nodes = [...e.target.parentElement.children];
-      const index = nodes.indexOf(e.target);
-      dotActive(index);
-      nextMove(index);
-    });
-  });
-  // 도트 클릭 시 실행함수
-
-  function dotActive(i) {
-    for (let b = 0; b < i; b++) {
-      $dotNav.appendChild($dotNavSpan[0]);
-      $dotNavSpan = $dotNav.querySelectorAll("span");
-    }
-  }
-  function nextMove(i) {
-    for (let b = 0; b < i; b++) {
-      $slideCon.appendChild($slideCon.firstElementChild);
-    }
-    $slideCon.style.marginLeft = "0px";
-  }
-
-  // 자동슬라이드 콜백함수
-  function loopMove() {
-    $dotNav.appendChild($dotNavSpan[0]);
-    $dotNavSpan = $dotNav.querySelectorAll("span");
-    $slideCon.style.transition = "0.5s";
-    $slideCon.style.marginLeft = `-${slideWidth}px`;
-
-    setTimeout(() => {
-      $slideCon.appendChild($slideCon.firstElementChild);
-      $slideCon.style.transition = "none";
-      $slideCon.style.marginLeft = "0";
-    }, 800);
-  }
-
-  intervalId = setInterval(loopMove, 3000);
-
-  // 화면 크기에 따른 슬라이드 반응형
-  function handleResize() {
-    slideWidth = $slides[0].offsetWidth;
-    $slideCon.style.marginLeft = "0px"; // 슬라이드 위치 초기화
-    clearInterval(intervalId); // 이전 interval 제거
-    intervalId = setInterval(loopMove, 3000); // 새로운 interval 시작
-  }
-
-  window.addEventListener("resize", handleResize); // resize 이벤트 핸들러 등록
-
-  // 초기 호출
-  handleResize();
-}
