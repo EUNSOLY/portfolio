@@ -92,15 +92,6 @@ header .gnb a.on::before {
   color: var(--colorMainP);
 }
 
-.Home .icon {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 12%;
-}
-.Home .icon a {
-  padding: 0.5rem;
-}
 .Home .btnCon {
   display: flex;
   justify-content: center;
@@ -433,6 +424,23 @@ header .gnb a.on::before {
 .Connect .alink {
   color: var(--colorMainP);
 }
+.Connect .icon {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.Connect .icon a {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  width: 60px;
+  transform: scale(1);
+}
+.Connect .icon a:hover {
+  transform: scale(1.1);
+}
 /* footer */
 .copyWriter {
   position: absolute;
@@ -578,6 +586,9 @@ header .gnb a.on::before {
     font-weight: bold;
     padding: 1vw 0;
   }
+  .Connect .icon a {
+    width: 50px;
+  }
   /* footer반응형 880px */
   .copyWriter.block {
     position: static;
@@ -690,26 +701,11 @@ header .gnb a.on::before {
 }
 
 @media (max-width: 380px) {
-  /* HOME반응형 380PX */
-  .Home .icon {
-    margin-top: 0;
-  }
-  .Home .icon a {
-    padding: 0.75rem 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .Home .icon a img {
-    width: 80%;
-  }
   /* Project반응형 380PX */
   .Project {
     white-space: nowrap;
   }
-  .Project li {
-    /* border: 2px solid #ffa51f; */
-  }
+
   .Project .title {
     font-size: 1rem;
   }
@@ -718,6 +714,18 @@ header .gnb a.on::before {
   }
   .Project .content {
     font-size: 3.7vw;
+  }
+  .Project .icon {
+    margin-top: 0;
+  }
+  .Project .icon a {
+    padding: 0.75rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Project .icon a img {
+    width: 80%;
   }
   /* FOOTER반응형 380PX */
   .copyWriter {

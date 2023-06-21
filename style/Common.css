@@ -114,15 +114,26 @@ img {
   width: calc(100% - 2rem);
   /* border: 1px solid red; */
 }
-
+.btnCon {
+  margin: calc(var(--gapB) * 2) 0;
+}
 .btn {
   background-color: var(--colorMainP);
-  padding: 0.5rem 1.5rem;
   cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 0.05px;
+  margin: 0 0.25rem;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media (max-width: 380px) {
   /* common */
+
   .btn {
+    width: 120px;
     padding: 0.25rem 1.25rem;
     font-size: 0.75rem;
   }
