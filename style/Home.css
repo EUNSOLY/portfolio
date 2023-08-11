@@ -441,6 +441,10 @@ header .gnb a.on::before {
 .Connect .icon a:hover {
   transform: scale(1.1);
 }
+
+.Connect .tistoryBtn img {
+  width: 70%;
+}
 /* footer */
 .copyWriter {
   position: absolute;
