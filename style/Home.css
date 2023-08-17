@@ -282,7 +282,7 @@ header .gnb a.on::before {
   padding: 2rem 0;
 }
 .Project .contentCon ul {
-  width: 300%;
+  width: 350%;
   margin-top: 1rem;
   display: flex;
 }
@@ -315,7 +315,10 @@ header .gnb a.on::before {
   margin-bottom: 5rem;
 }
 .Project .content {
-  padding: 0 0 5rem 0;
+  padding: 0 0 0.75rem 0;
+}
+.Project .lib {
+  padding: 0 0 1rem 0;
 }
 .Project .hastag {
   display: flex;
@@ -340,12 +343,20 @@ header .gnb a.on::before {
 .Project .right img {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 20%;
   object-fit: cover;
   transform: translate(-50%, -50%);
 }
+.Project .project4 .right img {
+  left: 50%;
+}
+.Project .project5 .right img {
+  top: 35%;
+}
+
 .Project .project2 img {
-  width: 40%;
+  /* width: 40%; */
+  top: 40%;
 }
 .Project .project3 img {
   width: 60%;
@@ -360,8 +371,8 @@ header .gnb a.on::before {
   position: relative;
   letter-spacing: 1px;
 }
-.Project .project2 .content span::before,
-.Project .project4 .content span::before,
+
+/* .Project .project4 .content span::before,
 .Project .project6 .content span::before {
   content: "";
   position: absolute;
@@ -372,7 +383,7 @@ header .gnb a.on::before {
   left: 0;
   top: 50%;
   transform: translate(0, -50%);
-}
+} */
 .Project .project4 .right {
   order: 0;
 }
@@ -536,7 +547,9 @@ header .gnb a.on::before {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-left: -50px;
   }
+
   .Project .project1 {
     padding-bottom: var(--gapS);
   }
@@ -556,19 +569,28 @@ header .gnb a.on::before {
     margin-bottom: var(--gapS);
     font-size: 1rem;
   }
+  .Project .lib {
+    padding: 0;
+    margin-bottom: var(--gapS);
+    font-size: 0.75rem;
+  }
   .Project .right {
     width: 100%;
     order: 0;
     overflow: hidden;
     padding-top: 50%;
     margin-bottom: var(--gapB);
+    margin-left: -25px;
   }
   .Project .right img {
     width: 80%;
+    left: 46%;
   }
   .Project .project2 img {
-    width: 33%;
+    top: 50%;
+    width: 75%;
   }
+
   .Project .project3 img {
     width: 55%;
   }
@@ -577,6 +599,9 @@ header .gnb a.on::before {
   }
   .Project .project5 img {
     width: 70%;
+  }
+  .Project .project5 .right img {
+    top: 50%;
   }
   .Project .project6 img {
     width: 75%;
@@ -682,6 +707,11 @@ header .gnb a.on::before {
     padding: 0;
     margin-bottom: var(--gapS);
     font-size: 0.85rem;
+  }
+  .Project .hastag {
+    flex-wrap: wrap;
+    padding: 0 2rem;
+    justify-content: center;
   }
   .Project .hastag span {
     font-size: 0.75rem;

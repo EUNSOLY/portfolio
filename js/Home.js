@@ -74,11 +74,10 @@ function showMenu(menuId) {
                   <p class="content">
                    React 라이브러리를 사용한 <br/>
                    Disney HomePage Clone <br/><br/>
-
+                   <p class="lib">
                    1. Swiper 슬라이드사용 <br/>
                    2. fireBase 로그인 구현 및 배포
-
-                   
+                   </p>
                   </p>
                   <p class="hastag">
                     <span>#React</span>
@@ -93,7 +92,7 @@ function showMenu(menuId) {
                   </div>
                 </div>
                 <div class="right">
-                  <img src="./image/project2.png" alt="project2" />
+                  <img src="./image/project2-1.png" alt="project2" />
                 </div>
               </li>
 
@@ -128,9 +127,10 @@ function showMenu(menuId) {
                   <p class="content">
                     웹사이트에 맞는 홈페이지의 레이아웃 변형과 <br />
                     사이트에 들어왔을 때 회사에 대해 알리는 것을 중점으로 반응형
-                    리뉴얼 <br />
-                    외부 라이브러리 사용 <br />
-                    <span>Swiper</span>
+                    리뉴얼 <br /><br/>
+                    <p class="lib">
+                    1. Swiper 슬라이드사용
+                    </p>
                   </p>
                   <p class="hastag">
                     <span>#HTML</span><span>#CSS</span>
@@ -142,7 +142,7 @@ function showMenu(menuId) {
                   </div>
                 </div>
                 <div class="right">
-                  <img src="./image/project4.png" alt="project4" />
+                  <img src="./image/project4-1.png" alt="project4" />
                 </div>
               </li>
 
@@ -154,8 +154,12 @@ function showMenu(menuId) {
                   <p class="content">
                     홈페이지를 이용자의 편의성을 증대하기 위한 UI 개선
                     <br />
+
+                    <p class="lib">
                     1. 중복되는 메뉴 구조와 복잡한 사이트맵의 재구성 <br />
                     2. 반응형에 무너지지않는 레이아웃
+                    </p>
+                   
                   </p>
                   <p class="hastag">
                     <span>#HTML</span><span>#CSS</span><span>#Javascript</span>
@@ -178,9 +182,12 @@ function showMenu(menuId) {
                   <p class="content">
                     외부 라이브러리를 사용한 스타벅스 클론코딩
                     <br />
-                    <span>Swiper</span> <br />
-                    <span> GSAP & ScrollToPlugin </span> <br />
-                    <span>ScrollMagic</span>
+                    <p class="lib">
+                     1. Swiper 슬라이드사용 <br/>
+                     2. GSAP & ScrollToPlugin <br/>
+                     3. ScrollMagic
+                    </p>
+                    
                   </p>
                   <p class="hastag">
                     <span>#HTML</span><span>#CSS</span><span>#Javascript</span>
