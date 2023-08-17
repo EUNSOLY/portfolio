@@ -69,23 +69,27 @@ function showMenu(menuId) {
               <li class="project2">
                 <h2>#02</h2>
                 <div class="left">
-                  <p class="title">버릴수 없는 구매욕구</p>
-                  <p class="subtitle">MOBILE FIXED</p>
+                  <p class="title">React Disney CloneProject</p>
+                  <p class="subtitle">RESPONSIVE WEBSITE</p>
                   <p class="content">
-                    Node.js로 CRUD 구현 <br />
-                    Express 라이브러리를 사용하였으며 데이터베이스로 MongoDB
-                    사용
+                   React 라이브러리를 사용한 <br/>
+                   Disney HomePage Clone <br/><br/>
+
+                   1. Swiper 슬라이드사용 <br/>
+                   2. fireBase 로그인 구현 및 배포
+
+                   
                   </p>
                   <p class="hastag">
-                    <span>#EJS</span><span>#CSS</span>
+                    <span>#React</span>
+                    <span>#StyledComponent</span>
                     <span>#Javascript</span>
-                    <span>#Node</span>
-                    <span>#Express</span>
-                    <span>#MongoDB</span>
+                    <span>#Axios</span>
+                    <span>#LocalStorage</span>
                   </p>
                   <div class="btnCon">
-                    <a href="https://port-0-purchase-list-d3jc2alg1jel3d.sel3.cloudtype.app/" class="btn" target="_blank">Demo</a>
-                    <a href="https://github.com/EUNSOLY/Purchase_list#nodejsexpress-crud" class="btn" target="_blank">Github</a>
+                    <a href="https://react-disney-plus-app-ab04b.firebaseapp.com/" class="btn" target="_blank">Demo</a>
+                    <a href="https://github.com/EUNSOLY/React_DisneyPlus#react_disneyplus-clone" class="btn" target="_blank">Github</a>
                   </div>
                 </div>
                 <div class="right">

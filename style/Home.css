@@ -360,6 +360,7 @@ header .gnb a.on::before {
   position: relative;
   letter-spacing: 1px;
 }
+.Project .project2 .content span::before,
 .Project .project4 .content span::before,
 .Project .project6 .content span::before {
   content: "";
