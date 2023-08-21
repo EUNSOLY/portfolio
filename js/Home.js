@@ -208,9 +208,9 @@ function showMenu(menuId) {
       // 슬라이드 갯수만큼 도트 생성
       $slides.forEach((item, i) => {
         item.dataset.index = i + 1;
-        dotIndex += `<span class='dot${i + 1}' data-index="${
-          i + 1
-        }" style=" left :${(i + 1) * 30}px;"></span>`;
+        dotIndex += `<span class='dot${i + 1}'  style=" left :${
+          (i + 1) * 30
+        }px;"></span>`;
       });
       $dotNav.innerHTML = dotIndex;
       slideSet();
