@@ -78,7 +78,7 @@ function adjustViewport() {
     ctx.fill();
     textLine(fontSize, lineHeight);
   } else {
-    erasingThreshold = 0.56;
+    erasingThreshold = 0.66;
     fontSize = 14; // 새로운 폰트 크기
     const newCanvasWidth = window.innerWidth;
     const newCanvasHeight = window.innerHeight;
