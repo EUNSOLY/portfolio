@@ -711,6 +711,13 @@ header .gnb a.on::before {
   .Project .left {
     margin-left: -30px;
   }
+  .Project .contentCon .dotnavi {
+    bottom: 4.5rem;
+  }
+  .Project .btnCon .btn {
+    margin-top: -2rem;
+    margin-right: 0.5rem;
+  }
 
   /* Connet반응형 480px */
   .Connect.on {
@@ -754,9 +761,7 @@ header .gnb a.on::before {
   .Project .icon a img {
     width: 80%;
   }
-  .Project .contentCon .dotnavi {
-    bottom: 4rem;
-  }
+
   /* FOOTER반응형 380PX */
   .copyWriter {
     font-size: 0.75rem;
