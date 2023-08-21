@@ -153,7 +153,6 @@ function mouseMoveHandler(e) {
     const canvasRect = canvas.getBoundingClientRect();
     const x = e.clientX - canvasRect.left - 10;
     const y = e.clientY - canvasRect.top - 50; // y 좌표를 10만큼 위쪽으로 이동
-    mouseHandler(e); // 드래그 중에도 스크래치 효과 적용
     drawTouchArea(x, y);
     draw(e); // 스크래치 효과 그리기
   }

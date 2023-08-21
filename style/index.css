@@ -161,6 +161,10 @@
     color: #fff;
     font-size: 14px;
   }
+  .scratchTxt.hidden {
+    transition: 0s;
+    opacity: 0;
+  }
   @keyframes slide-down {
     0% {
       transform: scale(1) translate(-50%, -330%) rotateX(0deg) rotateZ(0deg);
