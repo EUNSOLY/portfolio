@@ -155,8 +155,9 @@
     left: 50%;
     transform: translate(-50%, -50%) rotateX(0deg) rotateZ(0deg);
     font-size: 1.25rem;
-    animation: slide-down 1.5s ease-in-out infinite;
+    animation: slide-down 1s ease-in-out infinite;
     opacity: 1;
+    transition: opacity 0.2s;
     color: #fff;
     font-size: 14px;
   }

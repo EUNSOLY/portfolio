@@ -15,24 +15,32 @@ let isDrawing = false;
 let erasingThreshold = 0.45; // 45% 지워졌을 때의 비율
 
 function textLine(fontSize, lineHeight) {
-  // 안내 문구 추가
-  const text = "Portfolio \n Drow";
-  const fontFamily = "PilseungGothic";
-  ctx.font = `${fontSize}vw ${fontFamily}`;
-  ctx.fillStyle = "#fff";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  const lines = text.split("\n"); // 줄바꿈을 기준으로 텍스트를 나눕니다.
+  const font = new FontFace(
+    "PilseungGothic",
+    "url(fonts/PilseungGothic.woff2)"
+  );
+  font.load().then((loadedFont) => {
+    document.fonts.add(loadedFont);
 
-  lines.forEach((line, index) => {
-    const y =
-      canvas.height / 2 -
-      ((lines.length - 1) * lineHeight) / 2 +
-      index * lineHeight;
-    ctx.fillText(line, canvas.width / 2, y);
+    // 안내 문구 추가
+    const text = "Portfolio \n Drow";
+    const fontFamily = "PilseungGothic";
+    ctx.font = `${fontSize}vw ${fontFamily}`;
+    ctx.fillStyle = "#fff";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    const lines = text.split("\n"); // 줄바꿈을 기준으로 텍스트를 나눕니다.
+
+    lines.forEach((line, index) => {
+      const y =
+        canvas.height / 2 -
+        ((lines.length - 1) * lineHeight) / 2 +
+        index * lineHeight;
+      ctx.fillText(line, canvas.width / 2, y);
+    });
+    console.log(fontSize, "폰트사이즈");
+    console.log(lineHeight, "높이");
   });
-  console.log(fontSize, "폰트사이즈");
-  console.log(lineHeight, "높이");
 }
 
 function adjustViewport() {
@@ -70,7 +78,7 @@ function adjustViewport() {
     ctx.fill();
     textLine(fontSize, lineHeight);
   } else {
-    erasingThreshold = 0.65;
+    erasingThreshold = 0.45;
     fontSize = 14; // 새로운 폰트 크기
     const newCanvasWidth = window.innerWidth;
     const newCanvasHeight = window.innerHeight;
@@ -135,18 +143,32 @@ function drawTouchArea(x, y) {
 // 마우스 이벤트 핸들러
 function mouseDownHandler(e) {
   isDrawing = true;
-  console.log(e);
-  draw(e);
+  console.log("클릭");
+  mouseHandler(e); // 클릭한 위치에 스크래치 효과 적용
+  draw(e); // 스크래치 효과 그리기
 }
 
 function mouseMoveHandler(e) {
   if (isDrawing) {
-    draw(e);
+    const canvasRect = canvas.getBoundingClientRect();
+    const x = e.clientX - canvasRect.left - 10;
+    const y = e.clientY - canvasRect.top - 50; // y 좌표를 10만큼 위쪽으로 이동
+    mouseHandler(e); // 드래그 중에도 스크래치 효과 적용
+    drawTouchArea(x, y);
+    draw(e); // 스크래치 효과 그리기
   }
 }
 
 function mouseUpHandler() {
   isDrawing = false;
+}
+
+// 클릭 이벤트 핸들러
+function mouseHandler(e) {
+  const canvasRect = canvas.getBoundingClientRect();
+  const x = e.clientX - canvasRect.left;
+  const y = e.clientY - canvasRect.top - 10; // y 좌표를 10만큼 위쪽으로 이동
+  drawTouchArea(x, y); // 클릭한 위치에 스크래치 효과 적용
 }
 
 // 터치 이벤트
