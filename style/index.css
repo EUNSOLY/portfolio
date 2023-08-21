@@ -33,7 +33,7 @@
   transform: translate(-50%, -50%);
 }
 .scratch {
-  border: 2px;
+  border: 2px solid #232323;
   position: relative;
   overflow: hidden;
   background: #232323;
@@ -105,5 +105,70 @@
     transform: scale(2) rotateX(0) rotateZ(0);
     opacity: 0;
     transition: 1s;
+  }
+}
+
+@media (max-width: 780px) {
+  .scratch__canvas {
+    position: absolute;
+    z-index: 10;
+  }
+  .scratch {
+    border: none;
+    position: relative;
+    overflow: hidden;
+    background: #232323;
+    border-radius: 0px;
+    box-shadow: -2px 2px 0px 0px #202020, -10px 10px 40px 0px rgba(0, 0, 0, 0.3);
+    transform: translate(0px, 0px) rotateX(0deg) rotateZ(0deg);
+    z-index: 2;
+    cursor: pointer;
+    width: 100vw;
+    height: 100vh;
+  }
+  .scratch__result {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .scratch.show {
+    animation: scaleAnimation 3s forwards;
+  }
+  @keyframes scaleAnimation {
+    0% {
+      transform: scale(1) rotateX(0) rotateZ(0);
+      transition: 1.5s;
+    }
+    100% {
+      transform: scale(2) rotateX(0) rotateZ(0);
+      opacity: 0;
+      transition: 1.5s;
+    }
+  }
+  .wrap .scratchTxt {
+    text-align: center;
+    font-family: "S-CoreDream-3Light";
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(0deg) rotateZ(0deg);
+    font-size: 1.25rem;
+    animation: slide-down 1.5s ease-in-out infinite;
+    opacity: 1;
+    color: #fff;
+    font-size: 14px;
+  }
+  @keyframes slide-down {
+    0% {
+      transform: scale(1) translate(-50%, -330%) rotateX(0deg) rotateZ(0deg);
+    }
+    50% {
+      transform: translate(-50%, -330%) rotateX(0deg) rotateZ(0deg) scale(1.2);
+    }
+    100% {
+      transform: scale(1) translate(-50%, -330%) rotateX(0deg) rotateZ(-0deg);
+    }
   }
 }
