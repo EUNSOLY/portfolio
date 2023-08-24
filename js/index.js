@@ -59,8 +59,8 @@ function adjustViewport() {
     ctx.fillRect(0, 0, WIDTH, WIDTH);
     ctx.fill();
     textLine(fontSize, lineHeight);
-  } else if (window.innerWidth >= 480) {
-    erasingThreshold = 0.57;
+  } else if (window.innerWidth >= 580) {
+    erasingThreshold = 0.5;
     fontSize = 12; // 새로운 폰트 크기
     const newCanvasWidth = window.innerWidth;
     const newCanvasHeight = window.innerHeight;
@@ -100,8 +100,6 @@ function adjustViewport() {
 
 function draw(e) {
   if (isDrawing) {
-    console.log(e.clientX, e.clientY, "확인해보쟈");
-    drawTouchArea(e.clientX, e.clientY); // 마우스 좌표 또는 터치 좌표로 지워주기
     // 현재 캔버스의 픽셀 데이터 가져오기
     const imageData = ctx.getImageData(0, 0, WIDTH, HEIGHT);
     const pixelData = imageData.data;
@@ -143,16 +141,16 @@ function drawTouchArea(x, y) {
 // 마우스 이벤트 핸들러
 function mouseDownHandler(e) {
   isDrawing = true;
-  console.log("클릭");
   mouseHandler(e); // 클릭한 위치에 스크래치 효과 적용
-  draw(e); // 스크래치 효과 그리기
+  canvas.addEventListener("mousemove", mouseMoveHandler);
+  console.log(e);
 }
 
 function mouseMoveHandler(e) {
   if (isDrawing) {
     const canvasRect = canvas.getBoundingClientRect();
-    const x = e.clientX - canvasRect.left - 10;
-    const y = e.clientY - canvasRect.top - 50; // y 좌표를 10만큼 위쪽으로 이동
+    const x = e.clientX - canvasRect.left - 30;
+    const y = e.clientY - canvasRect.top - 70; // y 좌표를 10만큼 위쪽으로 이동
     drawTouchArea(x, y);
     draw(e); // 스크래치 효과 그리기
   }
@@ -160,8 +158,10 @@ function mouseMoveHandler(e) {
 
 function mouseUpHandler() {
   isDrawing = false;
-}
 
+  // 마우스 움직임 이벤트 핸들러 제거
+  canvas.removeEventListener("mousemove", mouseMoveHandler);
+}
 // 클릭 이벤트 핸들러
 function mouseHandler(e) {
   const canvasRect = canvas.getBoundingClientRect();
@@ -188,6 +188,7 @@ function touchMoveHandler(e) {
     const canvasRect = canvas.getBoundingClientRect();
     const x = touch.clientX - canvasRect.left;
     const y = touch.clientY - canvasRect.top;
+    console.log(x, y);
     drawTouchArea(x, y); // 현재 터치 지점으로 지우기
     draw(e);
   }
@@ -206,6 +207,7 @@ window.addEventListener("load", adjustViewport);
 window.addEventListener("resize", adjustViewport);
 
 // 이벤트 핸들러 등록
+
 canvas.addEventListener("mousedown", mouseDownHandler);
 canvas.addEventListener("mousemove", mouseMoveHandler);
 canvas.addEventListener("mouseup", mouseUpHandler);

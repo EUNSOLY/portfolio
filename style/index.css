@@ -83,6 +83,18 @@
   transform: rotate(-90deg);
 }
 
+.coin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #b5b5b6;
+  transform: perspective(800px) translate(60%, -50%) rotate(20deg)
+    skew(-20deg, 0);
+  transform-origin: center center;
+}
 /* 애니메이션 */
 @keyframes slide-down {
   0% {
