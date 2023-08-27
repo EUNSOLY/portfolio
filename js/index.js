@@ -170,7 +170,7 @@ function touchMoveHandler(e) {
 
 function drawTouchArea(x, y) {
   // 터치된 영역을 지우기
-  ctx.clearRect(x - 25, y - 25, 100, 100);
+  ctx.clearRect(x, y, 100, 100);
 }
 function touchEndHandler() {
   isDrawing = false;
