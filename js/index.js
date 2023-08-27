@@ -12,6 +12,7 @@ let lineHeight = fontSize * 18; // 줄 간격을 설정합니다.
 
 // 초기값
 let isDrawing = false;
+let Mdraw = false;
 let erasingThreshold = 0.45; // 45% 지워졌을 때의 비율
 
 function textLine(fontSize, lineHeight) {
@@ -49,52 +50,108 @@ function adjustViewport() {
   if (window.innerWidth >= 780) {
     fontSize = 7; // 새로운 폰트 크기
     lineHeight = fontSize * 18;
+    // Canvas 크기 조정
+    canvas.width = WIDTH;
+    canvas.height = HEIGHT;
+    // 기존 텍스트 지우기
+    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+    // 배경 다시 그리기
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, WIDTH, WIDTH);
+    ctx.fill();
+    textLine(fontSize, lineHeight);
   } else if (window.innerWidth >= 580) {
     erasingThreshold = 0.5;
     fontSize = 12; // 새로운 폰트 크기
     lineHeight = fontSize * 5;
+    // Canvas 크기 조정
+    canvas.width = WIDTH;
+    canvas.height = HEIGHT;
+    // 기존 텍스트 지우기
+    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+    // 배경 다시 그리기
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, WIDTH, WIDTH);
+    ctx.fill();
+    textLine(fontSize, lineHeight);
   } else {
     erasingThreshold = 0.66;
     fontSize = 14; // 새로운 폰트 크기\
-    lineHeight = fontSize * 5;
+    lineHeight = fontSize * 4;
+    // Canvas 크기 조정
+    canvas.width = WIDTH;
+    canvas.height = HEIGHT;
+    // 기존 텍스트 지우기
+    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+    // 배경 다시 그리기
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, WIDTH, WIDTH);
+    ctx.fill();
+    textLine(fontSize, lineHeight);
   }
-  // Canvas 크기 조정
-  canvas.width = WIDTH;
-  canvas.height = HEIGHT;
-  // 기존 텍스트 지우기
-  ctx.clearRect(0, 0, WIDTH, HEIGHT);
-  // 배경 다시 그리기
-  ctx.fillStyle = "black";
-  ctx.fillRect(0, 0, WIDTH, WIDTH);
-  ctx.fill();
-  textLine(fontSize, lineHeight);
 }
 
 function draw(e) {
   if (isDrawing) {
-    // 현재 캔버스의 픽셀 데이터 가져오기
-    const imageData = ctx.getImageData(0, 0, WIDTH, HEIGHT);
-    const pixelData = imageData.data;
-    const totalPixels = pixelData.length / 4;
+    if (Mdraw) {
+      const touch = e.touches[0];
+      const canvasRect = canvas.getBoundingClientRect();
+      const x = touch.clientX - canvasRect.left;
+      const y = touch.clientY - canvasRect.top;
+      drawTouchArea(x, y);
+      // 현재 캔버스의 픽셀 데이터 가져오기
+      const imageData = ctx.getImageData(0, 0, WIDTH, HEIGHT);
+      const pixelData = imageData.data;
+      const totalPixels = pixelData.length / 4;
 
-    // 지워진 픽셀의 비율 계산
-    let erasedPixels = 0;
-    for (let i = 0; i < totalPixels; i++) {
-      // 투명한 픽셀(알파 채널이 0)을 세어서 지워진 픽셀 개수를 구합니다.
-      if (pixelData[i * 4 + 3] === 0) {
-        erasedPixels++;
+      // 지워진 픽셀의 비율 계산
+      let erasedPixels = 0;
+      for (let i = 0; i < totalPixels; i++) {
+        // 투명한 픽셀(알파 채널이 0)을 세어서 지워진 픽셀 개수를 구합니다.
+        if (pixelData[i * 4 + 3] === 0) {
+          erasedPixels++;
+        }
       }
-    }
-    const erasedRatio = erasedPixels / totalPixels;
+      const erasedRatio = erasedPixels / totalPixels;
 
-    // 비율이 일정 수준 이상이면 특정 태그에 클래스를 추가합니다.
-    if (erasedRatio >= erasingThreshold) {
-      $scratch.classList.add("show");
-      $scratchTxt.classList.add("hidden");
-      setTimeout(() => {
-        $wrap.classList.add("change");
-        window.location.href = "Home.html";
-      }, 1300);
+      // 비율이 일정 수준 이상이면 특정 태그에 클래스를 추가합니다.
+      if (erasedRatio >= erasingThreshold) {
+        $scratch.classList.add("show");
+        $scratchTxt.classList.add("hidden");
+        setTimeout(() => {
+          $wrap.classList.add("change");
+          window.location.href = "Home.html";
+        }, 1300);
+      }
+    } else {
+      const canvasRect = canvas.getBoundingClientRect();
+      const x = e.clientX - canvasRect.left;
+      const y = e.clientY - canvasRect.top;
+      drawTouchArea(x, y);
+      // 현재 캔버스의 픽셀 데이터 가져오기
+      const imageData = ctx.getImageData(0, 0, WIDTH, HEIGHT);
+      const pixelData = imageData.data;
+      const totalPixels = pixelData.length / 4;
+
+      // 지워진 픽셀의 비율 계산
+      let erasedPixels = 0;
+      for (let i = 0; i < totalPixels; i++) {
+        // 투명한 픽셀(알파 채널이 0)을 세어서 지워진 픽셀 개수를 구합니다.
+        if (pixelData[i * 4 + 3] === 0) {
+          erasedPixels++;
+        }
+      }
+      const erasedRatio = erasedPixels / totalPixels;
+
+      // 비율이 일정 수준 이상이면 특정 태그에 클래스를 추가합니다.
+      if (erasedRatio >= erasingThreshold) {
+        $scratch.classList.add("show");
+        $scratchTxt.classList.add("hidden");
+        setTimeout(() => {
+          $wrap.classList.add("change");
+          window.location.href = "Home.html";
+        }, 1300);
+      }
     }
   }
 }
@@ -113,67 +170,41 @@ function drawTouchArea(x, y) {
 // 마우스 이벤트 핸들러
 function mouseDownHandler(e) {
   isDrawing = true;
-  mouseHandler(e); // 클릭한 위치에 스크래치 효과 적용
-  canvas.addEventListener("mousemove", mouseMoveHandler);
 }
 
 function mouseMoveHandler(e) {
   if (isDrawing) {
-    const canvasRect = canvas.getBoundingClientRect();
-    const x = e.clientX - canvasRect.left;
-    const y = e.clientY - canvasRect.top;
-    drawTouchArea(x, y);
+    draw(e);
   }
 }
 
 function mouseUpHandler() {
   isDrawing = false;
-
-  // 마우스 움직임 이벤트 핸들러 제거
-  canvas.removeEventListener("mousemove", mouseMoveHandler);
-}
-// 클릭 이벤트 핸들러
-function mouseHandler(e) {
-  const canvasRect = canvas.getBoundingClientRect();
-  const x = e.clientX - canvasRect.left;
-  const y = e.clientY - canvasRect.top;
-  drawTouchArea(x, y); // 클릭한 위치에 스크래치 효과 적용
 }
 
 // 터치 이벤트
 function touchStartHandler(e) {
   e.preventDefault(); // 기본 터치 이벤트 동작 방지하기
   isDrawing = true;
-  const touch = e.touches[0];
-  const canvasRect = canvas.getBoundingClientRect();
-  const x = touch.clientX - canvasRect.left;
-  const y = touch.clientY - canvasRect.top;
-  drawTouchArea(x, y); // 첫 번째 터치 지점으로 지우기
+  Mdraw = true;
 }
 
 function touchMoveHandler(e) {
   e.preventDefault(); // 기본 터치 이벤트 동작 방지하기
   if (isDrawing) {
-    const touch = e.touches[0];
-    const canvasRect = canvas.getBoundingClientRect();
-    const x = touch.clientX - canvasRect.left;
-    const y = touch.clientY - canvasRect.top;
-    drawTouchArea(x, y); // 현재 터치 지점으로 지우기
+    draw(e);
   }
+}
+
+function touchEndHandler() {
+  isDrawing = false;
+  Mdraw = false;
 }
 
 function drawTouchArea(x, y) {
   // 터치된 영역을 지우기
-  if ("ontouchstart" in window) {
-    ctx.clearRect(x, y, 100, 100);
-  } else {
-    ctx.clearRect(x + 50, y - 150, 100, 100);
-  }
-
-  draw(); // 스크래치 효과 그리기
-}
-function touchEndHandler() {
-  isDrawing = false;
+  console.log("x", x, "y", y);
+  ctx.clearRect(x + 50, y - 150, 100, 100);
 }
 
 // 초기 로드 시 및 리사이즈 시에 뷰포트 조정 함수 호출
