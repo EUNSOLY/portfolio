@@ -27,37 +27,23 @@ function textLine(fontSize, lineHeight) {
     const fontFamily = "PilseungGothic";
     if (window.innerWidth >= 1020) {
       ctx.font = `85px ${fontFamily}`;
-      ctx.fillStyle = "#fff";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      const lines = text.split("\n"); // 줄바꿈을 기준으로 텍스트를 나눕니다.
-
-      lines.forEach((line, index) => {
-        const y =
-          canvas.height / 2 -
-          ((lines.length - 1) * lineHeight) / 2 +
-          index * lineHeight;
-        ctx.fillText(line, canvas.width / 2, y);
-      });
-      console.log(fontSize, "폰트사이즈");
-      console.log(lineHeight, "높이");
     } else {
       ctx.font = `${fontSize}vw ${fontFamily}`;
-      ctx.fillStyle = "#fff";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      const lines = text.split("\n"); // 줄바꿈을 기준으로 텍스트를 나눕니다.
-
-      lines.forEach((line, index) => {
-        const y =
-          canvas.height / 2 -
-          ((lines.length - 1) * lineHeight) / 2 +
-          index * lineHeight;
-        ctx.fillText(line, canvas.width / 2, y);
-      });
-      console.log(fontSize, "폰트사이즈");
-      console.log(lineHeight, "높이");
     }
+    ctx.fillStyle = "#fff";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    const lines = text.split("\n"); // 줄바꿈을 기준으로 텍스트를 나눕니다.
+
+    lines.forEach((line, index) => {
+      const y =
+        canvas.height / 2 -
+        ((lines.length - 1) * lineHeight) / 2 +
+        index * lineHeight;
+      ctx.fillText(line, canvas.width / 2, y);
+    });
+    console.log(fontSize, "폰트사이즈");
+    console.log(lineHeight, "높이");
   });
 }
 
@@ -65,55 +51,25 @@ function adjustViewport() {
   if (window.innerWidth >= 780) {
     fontSize = 7; // 새로운 폰트 크기
     lineHeight = fontSize * 18;
-    // Canvas 크기 조정
-    canvas.width = WIDTH;
-    canvas.height = HEIGHT;
-
-    // 기존 텍스트 지우기
-    ctx.clearRect(0, 0, WIDTH, HEIGHT);
-
-    // 배경 다시 그리기
-    ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, WIDTH, WIDTH);
-    ctx.fill();
-    textLine(fontSize, lineHeight);
   } else if (window.innerWidth >= 580) {
     erasingThreshold = 0.5;
     fontSize = 12; // 새로운 폰트 크기
-    const newCanvasWidth = window.innerWidth;
-    const newCanvasHeight = window.innerHeight;
-    lineHeight = fontSize * 6;
-    // Canvas 크기 조정
-    canvas.width = newCanvasWidth;
-    canvas.height = newCanvasHeight;
-
-    // 기존 텍스트 지우기
-    ctx.clearRect(0, 0, newCanvasWidth, newCanvasHeight);
-
-    // 배경 다시 그리기
-    ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, newCanvasWidth, newCanvasHeight);
-    ctx.fill();
-    textLine(fontSize, lineHeight);
   } else {
     erasingThreshold = 0.66;
     fontSize = 14; // 새로운 폰트 크기
-    const newCanvasWidth = window.innerWidth;
-    const newCanvasHeight = window.innerHeight;
-    lineHeight = fontSize * 6;
-    // Canvas 크기 조정
-    canvas.width = newCanvasWidth;
-    canvas.height = newCanvasHeight;
-
-    // 기존 텍스트 지우기
-    ctx.clearRect(0, 0, newCanvasWidth, newCanvasHeight);
-
-    // 배경 다시 그리기
-    ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, newCanvasWidth, newCanvasHeight);
-    ctx.fill();
-    textLine(fontSize, lineHeight);
   }
+  // Canvas 크기 조정
+  canvas.width = WIDTH;
+  canvas.height = HEIGHT;
+
+  // 기존 텍스트 지우기
+  ctx.clearRect(0, 0, WIDTH, HEIGHT);
+
+  // 배경 다시 그리기
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, WIDTH, WIDTH);
+  ctx.fill();
+  textLine(fontSize, lineHeight);
 }
 
 function draw(e) {
@@ -146,8 +102,8 @@ function draw(e) {
 }
 function drawTouchArea(x, y) {
   // 터치된 영역을 지우기
-  const touchAreaSize = 150;
-  const halfTouchSize = touchAreaSize / 2;
+  const touchAreaSize = 160;
+  const halfTouchSize = touchAreaSize / 1.5;
   ctx.clearRect(
     x - halfTouchSize,
     y - halfTouchSize,
