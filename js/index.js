@@ -155,6 +155,7 @@ function draw(e) {
     }
   }
 }
+
 function drawTouchArea(x, y) {
   // 터치된 영역을 지우기
   const touchAreaSize = 160;
@@ -199,12 +200,6 @@ function touchMoveHandler(e) {
 function touchEndHandler() {
   isDrawing = false;
   Mdraw = false;
-}
-
-function drawTouchArea(x, y) {
-  // 터치된 영역을 지우기
-  console.log("x", x, "y", y);
-  ctx.clearRect(x + 50, y - 150, 100, 100);
 }
 
 // 초기 로드 시 및 리사이즈 시에 뷰포트 조정 함수 호출
