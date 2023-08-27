@@ -49,17 +49,14 @@ function adjustViewport() {
   if (window.innerWidth >= 780) {
     fontSize = 7; // 새로운 폰트 크기
     lineHeight = fontSize * 18;
-    console.log("780이상", lineHeight);
   } else if (window.innerWidth >= 580) {
     erasingThreshold = 0.5;
     fontSize = 12; // 새로운 폰트 크기
     lineHeight = fontSize * 5;
-    console.log("780이상", lineHeight);
   } else {
     erasingThreshold = 0.66;
-    fontSize = 14; // 새로운 폰트 크기
-
-    console.log("780이상", lineHeight);
+    fontSize = 14; // 새로운 폰트 크기\
+    lineHeight = fontSize * 5;
   }
   // Canvas 크기 조정
   canvas.width = WIDTH;
@@ -167,7 +164,12 @@ function touchMoveHandler(e) {
 
 function drawTouchArea(x, y) {
   // 터치된 영역을 지우기
-  ctx.clearRect(x + 50, y - 150, 100, 100);
+  if ("ontouchstart" in window) {
+    ctx.clearRect(x, y, 100, 100);
+  } else {
+    ctx.clearRect(x + 50, y - 150, 100, 100);
+  }
+
   draw(); // 스크래치 효과 그리기
 }
 function touchEndHandler() {
