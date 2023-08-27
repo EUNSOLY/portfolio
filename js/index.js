@@ -21,12 +21,12 @@ function textLine(fontSize, lineHeight) {
   );
   font.load().then((loadedFont) => {
     document.fonts.add(loadedFont);
-
     // 안내 문구 추가
     const text = "Portfolio \n Drow";
     const fontFamily = "PilseungGothic";
     if (window.innerWidth >= 1020) {
-      ctx.font = `85px ${fontFamily}`;
+      fontSize = 85;
+      ctx.font = `${fontSize}px ${fontFamily}`;
     } else {
       ctx.font = `${fontSize}vw ${fontFamily}`;
     }
@@ -42,8 +42,6 @@ function textLine(fontSize, lineHeight) {
         index * lineHeight;
       ctx.fillText(line, canvas.width / 2, y);
     });
-    console.log(fontSize, "폰트사이즈");
-    console.log(lineHeight, "높이");
   });
 }
 
@@ -51,20 +49,23 @@ function adjustViewport() {
   if (window.innerWidth >= 780) {
     fontSize = 7; // 새로운 폰트 크기
     lineHeight = fontSize * 18;
+    console.log("780이상", lineHeight);
   } else if (window.innerWidth >= 580) {
     erasingThreshold = 0.5;
     fontSize = 12; // 새로운 폰트 크기
+    lineHeight = fontSize * 5;
+    console.log("780이상", lineHeight);
   } else {
     erasingThreshold = 0.66;
     fontSize = 14; // 새로운 폰트 크기
+
+    console.log("780이상", lineHeight);
   }
   // Canvas 크기 조정
   canvas.width = WIDTH;
   canvas.height = HEIGHT;
-
   // 기존 텍스트 지우기
   ctx.clearRect(0, 0, WIDTH, HEIGHT);
-
   // 배경 다시 그리기
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, WIDTH, WIDTH);
