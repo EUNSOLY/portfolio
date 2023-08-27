@@ -125,7 +125,6 @@ function mouseMoveHandler(e) {
     const x = e.clientX - canvasRect.left;
     const y = e.clientY - canvasRect.top;
     drawTouchArea(x, y);
-    draw(e); // 스크래치 효과 그리기
   }
 }
 
@@ -162,13 +161,13 @@ function touchMoveHandler(e) {
     const x = touch.clientX - canvasRect.left;
     const y = touch.clientY - canvasRect.top;
     drawTouchArea(x, y); // 현재 터치 지점으로 지우기
-    draw(e);
   }
 }
 
 function drawTouchArea(x, y) {
   // 터치된 영역을 지우기
-  ctx.clearRect(x - 30, y - 90, 100, 100);
+  ctx.clearRect(x + 50, y - 150, 100, 100);
+  draw(); // 스크래치 효과 그리기
 }
 function touchEndHandler() {
   isDrawing = false;
