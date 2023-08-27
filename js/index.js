@@ -63,7 +63,7 @@ function adjustViewport() {
   } else if (window.innerWidth >= 580) {
     erasingThreshold = 0.5;
     fontSize = 12; // 새로운 폰트 크기
-    lineHeight = fontSize * 5;
+    lineHeight = fontSize * 6;
     // Canvas 크기 조정
     canvas.width = WIDTH;
     canvas.height = HEIGHT;
@@ -77,7 +77,7 @@ function adjustViewport() {
   } else {
     erasingThreshold = 0.66;
     fontSize = 14; // 새로운 폰트 크기\
-    lineHeight = fontSize * 4;
+    lineHeight = fontSize * 5;
     // Canvas 크기 조정
     canvas.width = WIDTH;
     canvas.height = HEIGHT;
@@ -92,13 +92,12 @@ function adjustViewport() {
 }
 
 function draw(e) {
+  // console.log("드로우", e);
   if (isDrawing) {
     if (Mdraw) {
       const touch = e.touches[0];
       const canvasRect = canvas.getBoundingClientRect();
-      const x = touch.clientX - canvasRect.left;
-      const y = touch.clientY - canvasRect.top;
-      drawTouchArea(x, y);
+
       // 현재 캔버스의 픽셀 데이터 가져오기
       const imageData = ctx.getImageData(0, 0, WIDTH, HEIGHT);
       const pixelData = imageData.data;
@@ -122,12 +121,20 @@ function draw(e) {
           $wrap.classList.add("change");
           window.location.href = "Home.html";
         }, 1300);
+      }
+      if (window.innerWidth <= 480) {
+        const x = touch.clientX;
+        const y = touch.clientY;
+        drawTouchArea(x, y);
+      } else {
+        const x = touch.clientX - canvasRect.left;
+        const y = touch.clientY - canvasRect.top;
+        drawTouchArea(x, y);
       }
     } else {
       const canvasRect = canvas.getBoundingClientRect();
-      const x = e.clientX - canvasRect.left;
-      const y = e.clientY - canvasRect.top;
-      drawTouchArea(x, y);
+
+      // drawTouchArea(x, y);
       // 현재 캔버스의 픽셀 데이터 가져오기
       const imageData = ctx.getImageData(0, 0, WIDTH, HEIGHT);
       const pixelData = imageData.data;
@@ -151,22 +158,29 @@ function draw(e) {
           $wrap.classList.add("change");
           window.location.href = "Home.html";
         }, 1300);
+      }
+      if (window.innerWidth <= 480) {
+        console.log("480");
+        const x = e.clientX;
+        const y = e.clientY;
+        drawTouchArea(x, y);
+      } else {
+        const x = e.clientX - canvasRect.left - 100;
+        const y = e.clientY - canvasRect.top - 130;
+        drawTouchArea(x, y);
       }
     }
   }
 }
 
 function drawTouchArea(x, y) {
-  console.log("x", x, "y", y);
   // 터치된 영역을 지우기
-  const touchAreaSize = 150;
+  const touchAreaSize = 160;
   const halfTouchSize = touchAreaSize / 2;
-  if (window.innerWidth >= 580) {
+  if (isDrawing && Mdraw) {
+    ctx.clearRect(x, y, touchAreaSize, touchAreaSize);
+  } else if (isDrawing) {
     ctx.clearRect(x, y - halfTouchSize, touchAreaSize, touchAreaSize);
-  } else if (window.innerWidth >= 400) {
-    ctx.clearRect(x - 40, y - 200, touchAreaSize, touchAreaSize);
-  } else {
-    ctx.clearRect(x + 30, y - 200, touchAreaSize, touchAreaSize);
   }
 }
 
