@@ -157,15 +157,17 @@ function draw(e) {
 }
 
 function drawTouchArea(x, y) {
+  console.log("x", x, "y", y);
   // 터치된 영역을 지우기
-  const touchAreaSize = 160;
+  const touchAreaSize = 150;
   const halfTouchSize = touchAreaSize / 2;
-  ctx.clearRect(
-    x - halfTouchSize,
-    y - halfTouchSize,
-    touchAreaSize,
-    touchAreaSize
-  );
+  if (window.innerWidth >= 580) {
+    ctx.clearRect(x, y - halfTouchSize, touchAreaSize, touchAreaSize);
+  } else if (window.innerWidth >= 400) {
+    ctx.clearRect(x - 40, y - 200, touchAreaSize, touchAreaSize);
+  } else {
+    ctx.clearRect(x + 30, y - 200, touchAreaSize, touchAreaSize);
+  }
 }
 
 // 마우스 이벤트 핸들러
