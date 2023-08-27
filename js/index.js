@@ -103,7 +103,7 @@ function draw(e) {
 function drawTouchArea(x, y) {
   // 터치된 영역을 지우기
   const touchAreaSize = 160;
-  const halfTouchSize = touchAreaSize / 1.5;
+  const halfTouchSize = touchAreaSize / 2;
   ctx.clearRect(
     x - halfTouchSize,
     y - halfTouchSize,
@@ -117,14 +117,13 @@ function mouseDownHandler(e) {
   isDrawing = true;
   mouseHandler(e); // 클릭한 위치에 스크래치 효과 적용
   canvas.addEventListener("mousemove", mouseMoveHandler);
-  console.log(e);
 }
 
 function mouseMoveHandler(e) {
   if (isDrawing) {
     const canvasRect = canvas.getBoundingClientRect();
-    const x = e.clientX - canvasRect.left - 30;
-    const y = e.clientY - canvasRect.top - 70; // y 좌표를 10만큼 위쪽으로 이동
+    const x = e.clientX - canvasRect.left;
+    const y = e.clientY - canvasRect.top;
     drawTouchArea(x, y);
     draw(e); // 스크래치 효과 그리기
   }
@@ -140,7 +139,7 @@ function mouseUpHandler() {
 function mouseHandler(e) {
   const canvasRect = canvas.getBoundingClientRect();
   const x = e.clientX - canvasRect.left;
-  const y = e.clientY - canvasRect.top - 10; // y 좌표를 10만큼 위쪽으로 이동
+  const y = e.clientY - canvasRect.top;
   drawTouchArea(x, y); // 클릭한 위치에 스크래치 효과 적용
 }
 
@@ -162,7 +161,6 @@ function touchMoveHandler(e) {
     const canvasRect = canvas.getBoundingClientRect();
     const x = touch.clientX - canvasRect.left;
     const y = touch.clientY - canvasRect.top;
-    console.log(x, y);
     drawTouchArea(x, y); // 현재 터치 지점으로 지우기
     draw(e);
   }
@@ -170,7 +168,7 @@ function touchMoveHandler(e) {
 
 function drawTouchArea(x, y) {
   // 터치된 영역을 지우기
-  ctx.clearRect(x, y, 100, 100);
+  ctx.clearRect(x - 30, y - 90, 100, 100);
 }
 function touchEndHandler() {
   isDrawing = false;
