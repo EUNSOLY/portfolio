@@ -25,21 +25,39 @@ function textLine(fontSize, lineHeight) {
     // 안내 문구 추가
     const text = "Portfolio \n Drow";
     const fontFamily = "PilseungGothic";
-    ctx.font = `${fontSize}vw ${fontFamily}`;
-    ctx.fillStyle = "#fff";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    const lines = text.split("\n"); // 줄바꿈을 기준으로 텍스트를 나눕니다.
+    if (window.innerWidth >= 1020) {
+      ctx.font = `85px ${fontFamily}`;
+      ctx.fillStyle = "#fff";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      const lines = text.split("\n"); // 줄바꿈을 기준으로 텍스트를 나눕니다.
 
-    lines.forEach((line, index) => {
-      const y =
-        canvas.height / 2 -
-        ((lines.length - 1) * lineHeight) / 2 +
-        index * lineHeight;
-      ctx.fillText(line, canvas.width / 2, y);
-    });
-    console.log(fontSize, "폰트사이즈");
-    console.log(lineHeight, "높이");
+      lines.forEach((line, index) => {
+        const y =
+          canvas.height / 2 -
+          ((lines.length - 1) * lineHeight) / 2 +
+          index * lineHeight;
+        ctx.fillText(line, canvas.width / 2, y);
+      });
+      console.log(fontSize, "폰트사이즈");
+      console.log(lineHeight, "높이");
+    } else {
+      ctx.font = `${fontSize}vw ${fontFamily}`;
+      ctx.fillStyle = "#fff";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      const lines = text.split("\n"); // 줄바꿈을 기준으로 텍스트를 나눕니다.
+
+      lines.forEach((line, index) => {
+        const y =
+          canvas.height / 2 -
+          ((lines.length - 1) * lineHeight) / 2 +
+          index * lineHeight;
+        ctx.fillText(line, canvas.width / 2, y);
+      });
+      console.log(fontSize, "폰트사이즈");
+      console.log(lineHeight, "높이");
+    }
   });
 }
 
