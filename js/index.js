@@ -75,7 +75,7 @@ function adjustViewport() {
     ctx.fill();
     textLine(fontSize, lineHeight);
   } else {
-    erasingThreshold = 0.66;
+    erasingThreshold = 0.5;
     fontSize = 14; // 새로운 폰트 크기\
     lineHeight = fontSize * 5;
     // Canvas 크기 조정
@@ -133,7 +133,6 @@ function draw(e) {
       }
     } else {
       const canvasRect = canvas.getBoundingClientRect();
-
       // drawTouchArea(x, y);
       // 현재 캔버스의 픽셀 데이터 가져오기
       const imageData = ctx.getImageData(0, 0, WIDTH, HEIGHT);
@@ -160,32 +159,64 @@ function draw(e) {
         }, 1300);
       }
       if (window.innerWidth <= 480) {
-        console.log("480");
         const x = e.clientX;
         const y = e.clientY;
-        drawTouchArea(x, y);
+        drawTouchArea(x, y, e);
       } else {
         const x = e.clientX - canvasRect.left - 100;
         const y = e.clientY - canvasRect.top - 130;
-        drawTouchArea(x, y);
+        drawTouchArea(x, y, e);
       }
     }
   }
 }
 
-function drawTouchArea(x, y) {
+function drawTouchArea(x, y, e) {
   // 터치된 영역을 지우기
+
   const touchAreaSize = 160;
-  const halfTouchSize = touchAreaSize / 2;
+
   if (isDrawing && Mdraw) {
-    ctx.clearRect(x, y, touchAreaSize, touchAreaSize);
+    if (window.innerWidth > 1400) {
+      ctx.clearRect(x, y + 50, touchAreaSize, touchAreaSize);
+    } else if (window.innerWidth >= 1200) {
+      ctx.clearRect(x, y + 110, touchAreaSize, touchAreaSize);
+    } else if (window.innerWidth >= 980) {
+      ctx.clearRect(x + 90, y + 110, touchAreaSize, touchAreaSize);
+    } else if (window.innerWidth >= 790) {
+      ctx.clearRect(x + 150, y + 110, touchAreaSize, touchAreaSize);
+    } else if (window.innerWidth >= 680) {
+      ctx.clearRect(x + 50, y - 150, touchAreaSize, touchAreaSize);
+    } else if (window.innerWidth >= 580) {
+      ctx.clearRect(x + 120, y - 150, 130, 130);
+    } else if (window.innerWidth >= 440) {
+      ctx.clearRect(x + 130, y - 300, 100, 100);
+    } else {
+      ctx.clearRect(x + 125, y - 300, 150, 150);
+    }
   } else if (isDrawing) {
-    ctx.clearRect(x, y - halfTouchSize, touchAreaSize, touchAreaSize);
+    if (window.innerWidth > 1400) {
+      ctx.clearRect(x, y + 50, touchAreaSize, touchAreaSize);
+    } else if (window.innerWidth >= 1200) {
+      ctx.clearRect(x, y + 110, touchAreaSize, touchAreaSize);
+    } else if (window.innerWidth >= 980) {
+      ctx.clearRect(x + 90, y + 110, touchAreaSize, touchAreaSize);
+    } else if (window.innerWidth >= 790) {
+      ctx.clearRect(x + 150, y + 110, touchAreaSize, touchAreaSize);
+    } else if (window.innerWidth >= 680) {
+      ctx.clearRect(x + 50, y - 150, touchAreaSize, touchAreaSize);
+    } else if (window.innerWidth >= 580) {
+      ctx.clearRect(x + 120, y - 150, 130, 130);
+    } else if (window.innerWidth >= 440) {
+      ctx.clearRect(x + 130, y - 300, 100, 100);
+    } else {
+      ctx.clearRect(x + 125, y - 300, 150, 150);
+    }
   }
 }
 
 // 마우스 이벤트 핸들러
-function mouseDownHandler(e) {
+function mouseDownHandler() {
   isDrawing = true;
 }
 
