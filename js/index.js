@@ -178,24 +178,28 @@ function drawTouchArea(x, y, e) {
 
   if (isDrawing && Mdraw) {
     if (window.innerWidth > 1400) {
-      ctx.clearRect(x, y + 50, touchAreaSize, touchAreaSize);
+      ctx.clearRect(x - 50, y - 90, touchAreaSize, touchAreaSize);
+      console.log("1400");
     } else if (window.innerWidth >= 1200) {
-      ctx.clearRect(x, y + 110, touchAreaSize, touchAreaSize);
+      ctx.clearRect(x, y + 20, touchAreaSize, touchAreaSize);
+      console.log("1200");
     } else if (window.innerWidth >= 980) {
-      ctx.clearRect(x + 90, y + 110, touchAreaSize, touchAreaSize);
+      ctx.clearRect(x + 90, y + 40, touchAreaSize, touchAreaSize);
     } else if (window.innerWidth >= 790) {
-      ctx.clearRect(x + 150, y + 110, touchAreaSize, touchAreaSize);
+      ctx.clearRect(x + 150, y + 50, touchAreaSize, touchAreaSize);
     } else if (window.innerWidth >= 680) {
       ctx.clearRect(x + 50, y - 150, touchAreaSize, touchAreaSize);
     } else if (window.innerWidth >= 580) {
       ctx.clearRect(x + 120, y - 150, 130, 130);
     } else if (window.innerWidth >= 440) {
-      ctx.clearRect(x + 130, y - 300, 100, 100);
+      ctx.clearRect(x + 130, y - 300, 120, 120);
     } else {
-      ctx.clearRect(x + 125, y - 300, 150, 150);
+      ctx.clearRect(x + 125, y - 350, 70, 80);
     }
   } else if (isDrawing) {
-    if (window.innerWidth > 1400) {
+    if (window.innerWidth > 1840) {
+      ctx.clearRect(x, y - 20, touchAreaSize, touchAreaSize);
+    } else if (window.innerWidth > 1400) {
       ctx.clearRect(x, y + 50, touchAreaSize, touchAreaSize);
     } else if (window.innerWidth >= 1200) {
       ctx.clearRect(x, y + 110, touchAreaSize, touchAreaSize);
@@ -210,7 +214,7 @@ function drawTouchArea(x, y, e) {
     } else if (window.innerWidth >= 440) {
       ctx.clearRect(x + 130, y - 300, 100, 100);
     } else {
-      ctx.clearRect(x + 125, y - 300, 150, 150);
+      ctx.clearRect(x + 110, y - 250, 80, 80);
     }
   }
 }
