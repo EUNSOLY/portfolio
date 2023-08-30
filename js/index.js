@@ -194,7 +194,7 @@ function drawTouchArea(x, y, e) {
     } else if (window.innerWidth >= 440) {
       ctx.clearRect(x + 130, y - 300, 120, 120);
     } else {
-      ctx.clearRect(x + 125, y - 350, 70, 80);
+      ctx.clearRect(x + 115, y - 300, 90, 90);
     }
   } else if (isDrawing) {
     if (window.innerWidth > 1840) {
